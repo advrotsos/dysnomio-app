@@ -5,6 +5,12 @@ app = Flask(__name__)
 game = Thesaurdle()
 lives_remaining = 5
 guess_count = 0
+print(game.answer)
+
+
+@app.route("/landing")
+def landing():
+    return render_template("landing.html")
 
 
 @app.route("/")
@@ -31,14 +37,6 @@ def process_guess():
         lives=int(lives_remaining),
         guess_count=guess_count,
     )
-
-
-# @app.route("/reduce_life")
-# def reduce_life():
-#     global lives_remaining
-#     if lives_remaining > 0:
-#         lives_remaining -= 1
-#     return render_template("index.html", lives=lives_remaining)
 
 
 @app.route("/win.html")

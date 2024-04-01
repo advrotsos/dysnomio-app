@@ -128,25 +128,26 @@ p {
   align-items: center;
   justify-content: center;
   font-weight: lighter;
-  font-size: normal;
+  font-size: large;
 }
 
 .len-feedback {
   text-align: center;
   font-weight: lighter;
   font-size: small;
+  font-size: large;
 }
 
 .complex-feedback {
   text-align: center;
   font-weight: lighter;
-  font-size: small;
+  font-size: large;
 }
 
 .sim-feedback {
   text-align: center;
   font-weight: lighter;
-  font-size: small;
+  font-size: large;
 }
 
 .feedback-title {
