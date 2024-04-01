@@ -3,19 +3,23 @@ from src.game import Thesaurdle
 
 app = Flask(__name__)
 game = Thesaurdle()
-guess_no = 0
+lives_remaining = 5
+guess_count = 0
 
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index.html", lives=lives_remaining, guess_count=guess_count)
 
 
-@app.route("/", methods=["POST", "GET"])
+@app.route("/guess", methods=["POST", "GET"])
 def process_guess():
+    global lives_remaining, guess_count
     if request.method == "POST":
         g = request.form["guess"]
-    game.guess(g)
+        game.guess(g)
+        guess_count += 1
+        lives_remaining -= 1
     return render_template(
         "index.html",
         guess_hint=game.guess_hint,
@@ -24,8 +28,17 @@ def process_guess():
         guess_word_len=game.guess_word_len,
         guess_complexity=game.guess_complexity,
         guess_sim=game.guess_sim,
-        game_guesses=len(game.guesses),
+        lives=int(lives_remaining),
+        guess_count=guess_count,
     )
+
+
+# @app.route("/reduce_life")
+# def reduce_life():
+#     global lives_remaining
+#     if lives_remaining > 0:
+#         lives_remaining -= 1
+#     return render_template("index.html", lives=lives_remaining)
 
 
 @app.route("/win.html")

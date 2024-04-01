@@ -15,7 +15,7 @@
     <h1 class="title-header">Thesaurdle (n)</h1>
     <div class="title-subheader">/ θɪˈsɔːrdᵊl /</div>
     <div class="container">
-      <form action="#" method="post">
+      <form action="/guess" method="post">
         <input
           type="text"
           placeholder="What is your guess?"
@@ -24,21 +24,41 @@
         />
       </form>
       <div class="box-container">
-        <div class="feedback-box-pos">
-          <p class="pos-feedback">{{guess_part_of_speech}}</p>
+        <div class="feedback-container">
+          <div class="feedback-title">Part of Speech</div>
+          <div
+            class="{% if answer_part_of_speech in guess_part_of_speech %}feedback-box-pos{% else %}feedback-box-neg{% endif %}"
+          >
+            <p class="pos-feedback">{{guess_part_of_speech}}</p>
+          </div>
         </div>
-        <div class="feedback-box-neg">
-          <p class="len-feedback">{{guess_word_len}}</p>
+
+        <div class="feedback-container">
+          <div class="feedback-title">Length</div>
+          <div class="feedback-box-neg">
+            <p class="len-feedback">{{guess_word_len}}</p>
+          </div>
         </div>
-        <div class="feedback-box-med">
-          <p class="complex-feedback">{{guess_complexity}}</p>
+
+        <div class="feedback-container">
+          <div class="feedback-title">Complexity</div>
+          <div class="feedback-box-neg">
+            <p class="complex-feedback">{{guess_complexity}}</p>
+          </div>
         </div>
-        <div class="feedback-box-neg">
-          <p class="sim-feedback">{{guess_sim}}</p>
+
+        <div class="feedback-container">
+          <div class="feedback-title">Similarity</div>
+          <div class="feedback-box-neg">
+            <p class="sim-feedback">{{guess_sim}}</p>
+          </div>
         </div>
       </div>
+
       <div class="lives-container">
-        {% for i in range(5 - 0) %}
+        {% for _ in range(guess_count) %}
+        <div class="good-lives"></div>
+        {% endfor %} {% for _ in range(lives) %}
         <div class="lives"></div>
         {% endfor %}
       </div>

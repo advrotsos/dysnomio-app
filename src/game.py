@@ -80,9 +80,14 @@ class Thesaurdle:
         if self.answer.part_of_speech in guess.part_of_speech:
             feedback.append("Part of Speech: Correct\n")
             self.guess_part_of_speech = "Part of Speech: Correct"
+            self.guess_part_of_speech = f"( {self.answer.part_of_speech} )"
         else:
             feedback.append("Part of Speech: Incorrect\n")
             self.guess_part_of_speech = "Part of Speech: Incorrect"
+            self.guess_part_of_speech = "( {} ) ".format(
+                ", ".join([x for x in guess.part_of_speech])
+            )
+            # self.guess_part_of_speech = f"( {guess.part_of_speech[0]} )"
 
     def judge_len(self, guess: Guess, feedback: str) -> None:
         lendiff = guess.length - self.answer.length
