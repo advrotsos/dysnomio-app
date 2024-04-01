@@ -1,0 +1,137 @@
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.title-header {
+  text-align: center;
+  padding-top: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+.title-subheader {
+  text-align: center;
+  padding-top: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 350px;
+  padding-top: 25px;
+}
+
+.box-container {
+  padding-top: 25px;
+  display: flex;
+}
+
+.feedback-box-neg {
+  width: 150px;
+  height: 150px;
+  background-color: rgba(204, 204, 204, 0.315);
+  margin: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feedback-box-pos {
+  width: 150px;
+  height: 150px;
+  background-color: rgba(156, 216, 126, 0.315);
+  margin: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feedback-box-med {
+  width: 150px;
+  height: 150px;
+  background-color: rgba(216, 213, 123, 0.315);
+  margin: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.guess-input {
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+::placeholder {
+  text-align: center;
+}
+
+.hint {
+  padding-top: 35px;
+  width: 500px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: lighter;
+}
+
+.lives-container {
+  padding-top: 20px;
+  display: flex;
+}
+
+.lives {
+  width: 8px; /* Adjust width as needed */
+  height: 8px; /* Adjust height as needed */
+  background-color: #ccc; /* Adjust background color as needed */
+  border-radius: 50%; /* Makes it a circle */
+  margin: 2px; /* Adjust margin as needed */
+}
+
+.pos-feedback {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-weight: lighter;
+  font-size: small;
+}
+
+.len-feedback {
+  text-align: center;
+  font-weight: lighter;
+  font-size: small;
+}
+
+.complex-feedback {
+  text-align: center;
+  font-weight: lighter;
+  font-size: small;
+}
+
+.sim-feedback {
+  text-align: center;
+  font-weight: lighter;
+  font-size: small;
+}
