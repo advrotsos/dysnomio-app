@@ -1,0 +1,73 @@
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.landing-square {
+  width: 550px;
+  height: 550px;
+  margin: 10px auto; /* Adjust margin to center horizontally */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: solid lightgrey 1px;
+  margin-top: 0px;
+}
+
+.title {
+  text-align: center;
+}
+
+.title-header {
+  margin-top: 150px; /* Adjust as needed */
+  font-weight: normal;
+}
+
+.content-buttons {
+  display: flex;
+  align-items: center;
+  margin-bottom: 125px;
+}
+.content-buttons select {
+  margin-right: 75px;
+}
+
+/* Additional styling for the select and button */
+select {
+  padding: 10px;
+  margin-right: 100px;
+}
+
+.start-button {
+  padding: 10px 20px;
+  background-color: rgba(67, 170, 15, 0.315);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.date {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: lighter;
+}
+
+.welcome-to {
+  text-align: center;
+  font-weight: lighter;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}

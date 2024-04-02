@@ -32,6 +32,7 @@ class Thesaurdle:
 
     def guess(self, word) -> None:
         guess = Guess(word)
+        self.current_guess = guess.word
         self.guesses.append(guess)
         if self.gameover:
             self.lose()

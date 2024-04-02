@@ -5,27 +5,35 @@ app = Flask(__name__)
 game = Thesaurdle()
 lives_remaining = 5
 guess_count = 0
-print(game.answer)
+answer = game.answer
 
-
-@app.route("/landing")
-def landing():
-    return render_template("landing.html")
+date = "Tuesday, April 2 2024"
 
 
 @app.route("/")
+def landing():
+    return render_template("landing.html", date=date)
+
+
+@app.route("/home")  # change back to "/" ?
 def home():
     return render_template("index.html", lives=lives_remaining, guess_count=guess_count)
 
 
 @app.route("/guess", methods=["POST", "GET"])
 def process_guess():
-    global lives_remaining, guess_count
+    global lives_remaining, guess_count, answer
+
     if request.method == "POST":
         g = request.form["guess"]
         game.guess(g)
+        # if game.current_guess == answer:
+        #     render_template("/win.html")
         guess_count += 1
         lives_remaining -= 1
+        if lives_remaining < 0:  # lose on the sixth guess
+            return render_template("/lose.html")
+
     return render_template(
         "index.html",
         guess_hint=game.guess_hint,
