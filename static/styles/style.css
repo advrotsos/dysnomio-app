@@ -5,23 +5,29 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  overflow: hidden;
 }
 
 p {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin-bottom: 0px;
 }
 
 .title-header {
   text-align: center;
-  padding-top: 2.5rem;
+  padding-top: 2rem;
   margin-bottom: 10px;
   font-weight: normal;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: rgb(66, 64, 64);
 }
 
 .title-subheader {
   text-align: center;
   padding-top: 0;
+  color: rgb(66, 64, 64);
 }
 
 .container {
@@ -32,6 +38,16 @@ p {
   height: 350px;
   padding-top: 25px;
 }
+
+/* .outer-container {
+  border: solid lightgrey 1px;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+} */
 
 .box-container {
   padding-top: 25px;
@@ -88,14 +104,30 @@ p {
   text-align: center;
 }
 
-.hint {
+/* .hint {
   padding-top: 35px;
+  padding-bottom: 0px;
   width: 500px;
   align-items: center;
   justify-content: center;
   display: flex;
   text-align: center;
   margin: 0 auto;
+  margin-top: auto;
+  font-weight: lighter;
+} */
+
+.hint {
+  padding-top: 10px;
+  padding-bottom: 0px;
+  width: 500px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
   font-weight: lighter;
 }
 
@@ -155,4 +187,40 @@ p {
   margin-bottom: 2px; /* Adjust as needed */
   font-weight: lighter; /* Make the title bold */
   font-size: smaller;
+}
+
+footer {
+  /* background-color: #333; */
+  /* background-color: rgba(204, 204, 204, 0.315); */
+  /* color: #fff; */
+  color: rgb(66, 64, 64);
+  text-align: center;
+  justify-content: center;
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  bottom: 20px;
+  font-weight: lighter;
+}
+
+/* 
+.date-footer {
+  text-align: center;
+  font-weight: bold;
+  margin: 0px;
+} */
+
+.error {
+  padding-top: 10px;
+  padding-bottom: 0px;
+  width: 500px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: lighter;
+  color: red;
 }
