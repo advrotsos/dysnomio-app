@@ -5,6 +5,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  overflow: hidden;
 }
 
 p {
@@ -13,10 +14,10 @@ p {
 }
 
 .landing-square {
-  width: 550px;
-  height: 550px;
+  width: 450px;
+  height: 450px;
   margin: 10px auto; /* Adjust margin to center horizontally */
-  border-radius: 10px;
+  border-radius: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -27,12 +28,21 @@ p {
 
 .title {
   text-align: center;
+  color: rgb(66, 64, 64);
 }
 
 .title-header {
-  margin-top: 150px; /* Adjust as needed */
-  font-weight: normal;
+  margin-top: 125px; /* Adjust as needed */
+  /* font-family: "Times New Roman", Times, serif; */
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: lighter;
+  margin-bottom: 10px;
 }
+/* 
+.title-subheader {
+  margin-top: 0px;
+} */
 
 .content-buttons {
   display: flex;
@@ -40,22 +50,31 @@ p {
   margin-bottom: 125px;
 }
 .content-buttons select {
-  margin-right: 75px;
+  margin-right: 50px;
 }
 
 /* Additional styling for the select and button */
 select {
   padding: 10px;
   margin-right: 100px;
+  width: 150px;
 }
 
 .start-button {
   padding: 10px 20px;
-  background-color: rgba(67, 170, 15, 0.315);
+  background-color: rgba(50, 145, 3, 0.315);
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: 150px;
+}
+.start-button:hover {
+  background-color: rgba(55, 128, 18, 0.596);
+}
+
+.start-button:active {
+  box-shadow: inset 5px 5px 10px -5px rgba(0, 0, 0, 0.5);
 }
 
 .date {

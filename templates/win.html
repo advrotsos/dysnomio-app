@@ -4,9 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Dysnomio</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles/landing.css') }}"
+    />
   </head>
   <body>
-    Congrats, you win!
+    <div class="welcome-to"></div>
+    <div class="landing-square">
+      <div class="title">
+        <h1 class="title-header">Congratulations!</h1>
+        <div class="title-subheader">You win!</div>
+      </div>
+      <div class="content-buttons">
+        <form action="{{ url_for('restart') }}" method="get">
+          <button type="submit" class="start-button">Restart</button>
+        </form>
+      </div>
+    </div>
+    <div class="date">{{ date }}</div>
   </body>
 </html>

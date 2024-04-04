@@ -16,6 +16,7 @@ class Thesaurdle:
         self.guesses = []
         self.answer = self.retrieve_answer()
         self.answer.complexity = GPTHelper().call_api_for_complexity(self.answer.word)
+        self.initial_hint(self.answer.word)
 
     def play(self) -> None:
         """For every round, submit a guess. Break the loop if you win, else `lose`."""
@@ -81,17 +82,18 @@ class Thesaurdle:
         if self.answer.part_of_speech in guess.part_of_speech:
             feedback.append("Part of Speech: Correct\n")
             self.guess_part_of_speech = "Part of Speech: Correct"
-            self.guess_part_of_speech = f"{self.answer.part_of_speech.capitalize()}"
+            self.guess_part_of_speech = f"{self.answer.part_of_speech}"
         else:
             feedback.append("Part of Speech: Incorrect\n")
             self.guess_part_of_speech = "Part of Speech: Incorrect"
             self.guess_part_of_speech = "{}".format(
-                ", ".join([x.capitalize() for x in set(guess.part_of_speech)])
+                ", ".join([x for x in set(guess.part_of_speech)])
             )
             # self.guess_part_of_speech = f"( {guess.part_of_speech[0]} )"
 
     def judge_len(self, guess: Guess, feedback: str) -> None:
         lendiff = guess.length - self.answer.length
+        self.lendiff = abs(lendiff)
         if lendiff == 0:
             feedback.append(f"Word Length: {guess.length}\n")
             self.guess_word_len = f"Word Length: {guess.length}"
@@ -112,6 +114,7 @@ class Thesaurdle:
         )
         self.guess_complexity = f"Guess Complexity: {guess.complexity}, Answer Complexity: {self.answer.complexity}"
         # NOTE: this is for testing
+        self.compdiff = abs(int(guess.complexity) - int(self.answer.complexity))
         self.guess_complexity = f"{guess.complexity} / 5"
 
     def judge_definition_similarity(self, guess: Guess, feedback: str) -> None:
@@ -123,14 +126,10 @@ class Thesaurdle:
         self.guess_sim = f"{sim} / 5"
 
     def hint(self, guess: Guess, feedback: str) -> None:
-        # feedback.append(
-        #     f"\n{GPTHelper().call_api_for_hints(guess.word, self.answer.word)}\n"
-        # )
-
         self.guess_hint = GPTHelper().call_api_for_hints(guess.word, self.answer.word)
 
     def initial_hint(self, answer: str) -> str:
-        return GPTHelper().call_api_for_initial_hint(answer)
+        self.init_hint = GPTHelper().call_api_for_initial_hint(answer)
 
     def retrieve_answer(self) -> str:
         return words.word_list.loc[random.choice(range(len(words.word_list)))]

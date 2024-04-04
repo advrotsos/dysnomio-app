@@ -9,66 +9,80 @@
       type="text/css"
       href="{{ url_for('static', filename='styles/style.css') }}"
     />
-    <title>Thesaurdle</title>
+    <title>Dysnomio</title>
   </head>
   <body>
-    <h1 class="title-header">Thesaurdle (n)</h1>
-    <div class="title-subheader">/ θɪˈsɔːrdᵊl /</div>
-    <div class="container">
-      <form action="/guess" method="post">
-        <input
-          type="text"
-          placeholder="What is your guess?"
-          class="guess-input"
-          name="guess"
-        />
-      </form>
-      <div class="box-container">
-        <div class="feedback-container">
-          <div class="feedback-title">Part of Speech</div>
-          <div
-            class="{% if answer_part_of_speech in guess_part_of_speech %}feedback-box-pos{% else %}feedback-box-neg{% endif %}"
-          >
-            <p class="pos-feedback">{{guess_part_of_speech}}</p>
+    <div class="outer-container">
+      <h1 class="title-header">Dysnomio (n.)</h1>
+      <div class="title-subheader">[ dĭs-nō′mē-oh ]</div>
+
+      <div class="container">
+        <form action="/guess" method="post">
+          <input
+            type="text"
+            placeholder="What is your guess?"
+            class="guess-input"
+            name="guess"
+          />
+        </form>
+        <div class="box-container">
+          <div class="feedback-container">
+            <div class="feedback-title">Part of Speech</div>
+            <div
+              class="{% if answer_part_of_speech in guess_part_of_speech %}feedback-box-pos{% else %}feedback-box-neg{% endif %}"
+            >
+              <p class="pos-feedback">{{guess_part_of_speech}}</p>
+            </div>
+          </div>
+
+          <div class="feedback-container">
+            <div class="feedback-title">Length</div>
+            <!-- <div class="feedback-box-neg"> -->
+            <div
+              class="{% if lendiff == 0 %} feedback-box-pos {% elif lendiff in [1, 2] %} feedback-box-med {% else %} feedback-box-neg {% endif %}"
+            >
+              <p class="len-feedback">{{guess_word_len}}</p>
+            </div>
+          </div>
+
+          <div class="feedback-container">
+            <div class="feedback-title">Complexity</div>
+            <div
+              class="{% if compdiff == 0 %} feedback-box-pos {% elif compdiff in [1, 2] %} feedback-box-med {% else %} feedback-box-neg {% endif %}"
+            >
+              <p class="complex-feedback">{{guess_complexity}}</p>
+            </div>
+          </div>
+
+          <div class="feedback-container">
+            <div class="feedback-title">Similarity</div>
+            <div
+              class="{% if guess_sim == 4 %}feedback-box-med {% elif guess_sim == 5 %}feedback-box-pos {% else %}feedback-box-neg{% endif %}"
+            >
+              <p class="sim-feedback">{{guess_sim}}</p>
+            </div>
           </div>
         </div>
 
-        <div class="feedback-container">
-          <div class="feedback-title">Length</div>
-          <div class="feedback-box-neg">
-            <p class="len-feedback">{{guess_word_len}}</p>
-          </div>
-        </div>
-
-        <div class="feedback-container">
-          <div class="feedback-title">Complexity</div>
-          <div class="feedback-box-neg">
-            <p class="complex-feedback">{{guess_complexity}}</p>
-          </div>
-        </div>
-
-        <div class="feedback-container">
-          <div class="feedback-title">Similarity</div>
-          <div class="feedback-box-neg">
-            <p class="sim-feedback">{{guess_sim}}</p>
-          </div>
+        <div class="lives-container">
+          {% for _ in range(guess_count) %}
+          <div class="good-lives"></div>
+          {% endfor %} {% for _ in range(lives) %}
+          <div class="lives"></div>
+          {% endfor %}
         </div>
       </div>
-
-      <div class="lives-container">
-        {% for _ in range(guess_count) %}
-        <div class="good-lives"></div>
-        {% endfor %} {% for _ in range(lives) %}
-        <div class="lives"></div>
-        {% endfor %}
+      <div class="hint">
+        {% if guess_count == 0 %} {{init_hint}} {% else %} {{guess_hint}} {%
+        endif %} {% if invalid_guess %}
       </div>
-    </div>
-    <div class="hint">
-      {{guess_hint}}
-      <!-- Lorem ipsum, dolor sit. Lorem ipsum, dolor sit. Lorem ipsum, dolor sit.
-      Lorem ipsum, dolor sit. Lorem ipsum, dolor sit. Lorem ipsum, dolor sit.
-      Lorem ipsum, dolor sit. Lorem ipsum, dolor sit. Lorem ipsum, dolor sit.
-      Lorem ipsum, dolor sit. Lorem ipsum, dolor sit. Lorem ipsum, dolor sit. -->
+      <p class="error">Word Not Found. Please Try Again.</p>
+      {% endif %}
+      <footer>
+        <div class="date-footer">
+          <span class="date">Tuesday, April 2 2024 </span>| <span>Hard</span>
+        </div>
+      </footer>
     </div>
   </body>
 </html>
