@@ -53,22 +53,6 @@ class Thesaurdle:
         print(self.answer, "\n")
         self.gameover = True
 
-    def prompt_for_guess(self) -> str:
-        """Prompt user for guess. If WordNotFound, keep prompting until guess is valid"""
-        valid_guess = False
-        while not valid_guess:
-            try:
-                guess = (
-                    str(input(f"What is your guess? Turns remaining: {self.lives} "))
-                    .strip()
-                    .lower()
-                )
-                g = Guess(guess)
-                valid_guess = True
-            except InvalidGuess:
-                print("Word not found. Try again.")
-        return g
-
     def process_guess(self, guess: Guess) -> None:
         feedback = ["\n"]
         self.judge_part_of_speech(guess, feedback)
@@ -80,49 +64,23 @@ class Thesaurdle:
 
     def judge_part_of_speech(self, guess: Guess, feedback: str) -> None:
         if self.answer.part_of_speech in guess.part_of_speech:
-            feedback.append("Part of Speech: Correct\n")
-            self.guess_part_of_speech = "Part of Speech: Correct"
             self.guess_part_of_speech = f"{self.answer.part_of_speech}"
         else:
-            feedback.append("Part of Speech: Incorrect\n")
-            self.guess_part_of_speech = "Part of Speech: Incorrect"
             self.guess_part_of_speech = "{}".format(
                 ", ".join([x for x in set(guess.part_of_speech)])
             )
-            # self.guess_part_of_speech = f"( {guess.part_of_speech[0]} )"
 
     def judge_len(self, guess: Guess, feedback: str) -> None:
         lendiff = guess.length - self.answer.length
         self.lendiff = abs(lendiff)
-        if lendiff == 0:
-            feedback.append(f"Word Length: {guess.length}\n")
-            self.guess_word_len = f"Word Length: {guess.length}"
-        if lendiff < 0:
-            feedback.append(f"Word Length: + {abs(lendiff)}\n")
-            self.guess_word_len = f"Word Length: + {abs(lendiff)}"
-        if lendiff > 0:
-            feedback.append(f"Word Length: - {abs(lendiff)}\n")
-            self.guess_word_len = f"Word Length: - {abs(lendiff)}"
-
-        # NOTE: this is for testing
         self.guess_word_len = guess.length
 
     def judge_complexity(self, guess: Guess, feedback: str) -> None:
-        # NOTE: this is a temp solution until I add this col to word list db
-        feedback.append(
-            f"Guess Complexity: {guess.complexity}, Answer Complexity: {self.answer.complexity}\n"
-        )
-        self.guess_complexity = f"Guess Complexity: {guess.complexity}, Answer Complexity: {self.answer.complexity}"
-        # NOTE: this is for testing
         self.compdiff = abs(int(guess.complexity) - int(self.answer.complexity))
         self.guess_complexity = f"{guess.complexity} / 5"
 
     def judge_definition_similarity(self, guess: Guess, feedback: str) -> None:
         sim = GPTHelper().call_api_for_similarity(guess.word, self.answer.word)
-        feedback.append(f"Similarity: {sim}\n")
-        self.guess_sim = f"Similarity: {sim}"
-
-        # NOTE: this is for testing
         self.guess_sim = f"{sim} / 5"
 
     def hint(self, guess: Guess, feedback: str) -> None:
