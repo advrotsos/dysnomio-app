@@ -9,13 +9,20 @@ from .guess import Guess
 
 
 class Thesaurdle:
-    def __init__(self, rounds: int = 5) -> None:
+    def __init__(self, difficulty: str = "hard", rounds: int = 5) -> None:
         self.gameover = False
         self.rounds = rounds
+        self.difficulty = difficulty
         self.lives = rounds
         self.guesses = []
-        self.answer = self.retrieve_answer()
+        self.answer = self.retrieve_answer(difficulty=self.difficulty)
         self.answer.complexity = GPTHelper().call_api_for_complexity(self.answer.word)
+        self.formatted_answer = (
+            self.answer.word.capitalize()
+            + " "
+            + f"({self.answer.part_of_speech.capitalize()}): "
+            + self.answer.definition
+        )
         self.initial_hint(self.answer.word)
 
     def play(self) -> None:
@@ -63,7 +70,6 @@ class Thesaurdle:
         self.judge_complexity(guess, feedback)
         self.judge_definition_similarity(guess, feedback)
         self.hint(guess, feedback)
-        print("".join(feedback))
 
     def judge_part_of_speech(self, guess: Guess, feedback: str) -> None:
         if self.answer.part_of_speech in guess.part_of_speech:
@@ -93,5 +99,20 @@ class Thesaurdle:
     def initial_hint(self, answer: str) -> str:
         self.init_hint = GPTHelper().call_api_for_initial_hint(answer)
 
-    def retrieve_answer(self) -> str:
-        return words.word_list.loc[random.choice(range(len(words.word_list)))]
+    def retrieve_answer(self, difficulty: str) -> str:
+        # Format this better please
+        return (
+            words.word_list[words.word_list.difficulty == difficulty]
+            .reset_index(drop=True)
+            .loc[
+                random.choice(
+                    range(
+                        len(
+                            words.word_list[
+                                words.word_list.difficulty == difficulty
+                            ].reset_index(drop=True)
+                        )
+                    )
+                )
+            ]
+        )

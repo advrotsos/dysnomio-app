@@ -1,0 +1,300 @@
+word,part_of_speech,definition,difficulty,length
+bird,noun,"A member of the class of animals Aves in the phylum Chordata, characterized by being warm-blooded, having feathers and wings usually capable of flight, and laying eggs.",easy,4
+bird,verb,To observe or identify wild birds in their natural environment.,easy,4
+tree,noun,Fast growing function based on Kruskal's tree theorem.,easy,4
+tree,noun,"A perennial woody plant, not exactly defined, but differentiated from a shrub by its larger size (typically over a few meters in height) or growth habit, usually having a single (or few) main axis or trunk unbranched for some distance above the ground and a head of branches and foliage.",easy,4
+tree,verb,To chase (an animal or person) up a tree.,easy,4
+car,noun,"A wheeled vehicle that moves independently, with at least three wheels, powered mechanically, steered by a driver and mostly for personal transportation.",easy,3
+ball,noun,"A solid or hollow sphere, or roughly spherical mass.",easy,4
+ball,verb,To form or wind into a ball.,easy,4
+ball,interjection,"An appeal by the crowd for holding the ball against a tackled player. This is heard almost any time an opposition player is tackled, without regard to whether the rules about ""prior opportunity"" to dispose of the ball are fulfilled.",easy,4
+chair,noun,"An item of furniture used to sit on or in, comprising a seat, legs, back, and sometimes arm rests, for use by one person. Compare stool, couch, sofa, settee, loveseat and bench.",easy,5
+chair,verb,To act as chairperson at; to preside over.,easy,5
+chair,noun,"A chairman or chairwoman, someone who presides over a meeting, board, etc.",easy,5
+chair,noun,A chair-like device used for performing execution by electrocution.,easy,5
+cat,noun,An animal of the family Felidae:,easy,3
+cat,verb,To hoist (the anchor) by its ring so that it hangs at the cathead.,easy,3
+dog,noun,"A mammal, Canis familiaris or Canis lupus familiaris, that has been domesticated for thousands of years, of highly variable appearance due to human breeding.",easy,3
+dog,verb,To pursue with the intent to catch.,easy,3
+dog,noun,Meat from a dog eaten as food.,easy,3
+apple,noun,"A common, round fruit produced by the tree Malus domestica, cultivated in temperate climates.",easy,5
+apple,verb,To become apple-like.,easy,5
+table,noun,Furniture with a top surface to accommodate a variety of uses.,easy,5
+table,verb,To tabulate; to put into a table or grid.,easy,5
+book,noun,"A collection of sheets of paper bound together to hinge at one edge, containing printed or written material, pictures, etc.",easy,4
+cheese,noun,A dairy product made from curdled or cultured milk.,easy,6
+cheese,verb,To prepare curds for making cheese.,easy,6
+cheese,interjection,"Said while being photographed, to give the impression of smiling.",easy,6
+banana,noun,An elongated curved tropical fruit that grows in bunches and has a creamy flesh and a smooth skin.,easy,6
+banana,adjective,"Curved like a banana, especially of a ball in flight.",easy,6
+purple,noun,A colour/color that is a dark blend of red and blue; dark magenta.,easy,6
+purple,verb,To turn purple in colour.,easy,6
+purple,adjective,Having a colour/color that is a dark blend of red and blue.,easy,6
+purple,noun,"A recreational drug based on cough syrup, popular in the hip-hop community in the southern United States.",easy,6
+orange,noun,An evergreen tree of the genus Citrus such as Citrus sinensis.,easy,6
+orange,verb,To color orange.,easy,6
+orange,adjective,Having the colour of the fruit of an orange tree; yellowred; reddish-yellow.,easy,6
+police,noun,A civil force granted the legal authority for law enforcement and maintaining public order.,easy,6
+police,verb,To enforce the law and keep order among (a group).,easy,6
+doctor,noun,"A physician; a member of the medical profession; one who is trained and licensed to heal the sick or injured. The final examination and qualification may award a doctor degree in which case the post-nominal letters are D.O., DPM, M.D., DMD, DDS, in the US or MBBS in the UK.",easy,6
+doctor,verb,To act as a medical doctor to.,easy,6
+teacher,noun,"A person who teaches, especially one employed in a school.",easy,7
+garden,noun,"An outdoor area containing one or more types of plants, usually plants grown for food or ornamental purposes.",easy,6
+garden,verb,To grow plants in a garden; to create or maintain a garden.,easy,6
+garden,adjective,"Common, ordinary, domesticated.",easy,6
+window,noun,The inedible parts of a grain-producing plant.,easy,6
+window,noun,"An opening, usually covered by one or more panes of clear glass, to allow light and air from outside to enter a building or vehicle.",easy,6
+window,verb,To furnish with windows.,easy,6
+jacket,noun,"A piece of clothing worn on the upper body outside a shirt or blouse, often waist length to thigh length.",easy,6
+jacket,verb,To enclose or encase in a jacket or other covering.,easy,6
+scared,verb,"To frighten, terrify, startle, especially in a minor way.",easy,6
+scared,adjective,"Feeling fear; afraid, frightened.",easy,6
+excited,verb,To stir the emotions of.,easy,7
+excited,adjective,Having great enthusiasm.,easy,7
+tired,verb,To become sleepy or weary.,easy,5
+tired,verb,To dress or adorn.,easy,5
+tired,verb,"To seize, pull, and tear prey, as a hawk does.",easy,5
+tired,adjective,In need of some rest or sleep.,easy,5
+hungry,adjective,Affected by hunger; desiring of food; having a physical need for food.,easy,6
+salty,adjective,Tasting of salt.,easy,5
+sweet,noun,The basic taste sensation induced by sugar.,easy,5
+sweet,verb,To sweeten.,easy,5
+sweet,adjective,"Having a pleasant taste, especially one relating to the basic taste sensation induced by sugar.",easy,5
+sweet,adverb,In a sweet manner.,easy,5
+sweet,interjection,Used as a positive response to good news or information.,easy,5
+music,noun,"A series of sounds organized in time, employing melody, harmony, tempo etc. usually to convey a mood.",easy,5
+music,verb,To seduce or entice with music.,easy,5
+color,noun,The spectral composition of visible light,easy,5
+color,verb,To give something color.,easy,5
+color,adjective,"Conveying color, as opposed to shades of gray.",easy,5
+family,noun,"A group of people who are closely related to one another (by blood, marriage or adoption); kin; for example, a set of parents and their children; an immediate family.",easy,6
+family,adjective,Suitable for children and adults.,easy,6
+family,noun,A person belonging to a particular family; a close relative or relation.,easy,6
+school,noun,"(collective) A group of fish or a group of marine mammals such as porpoises, dolphins, or whales.",easy,6
+school,verb,"(of fish) To form into, or travel in a school.",easy,6
+rainbow,noun,"A multicoloured arch in the sky, produced by prismatic refraction of light within droplets of rain in the air.",easy,7
+rainbow,verb,"To brighten with, or as with, a rainbow; to pattern with the colours of the rainbow.",easy,7
+rainbow,adjective,Multicolored.,easy,7
+friend,noun,"A person other than a family member, spouse or lover whose company one enjoys and towards whom one feels affection.",easy,6
+friend,verb,"To act as a friend to, to befriend; to be friendly to, to help.",easy,6
+sleep,verb,To rest in a state of reduced consciousness.,easy,5
+jump,noun,The act of jumping; a leap; a spring; a bound.,easy,4
+jump,verb,"To propel oneself rapidly upward, downward and/or in any horizontal direction such that momentum causes the body to become airborne.",easy,4
+jump,adjective,Exact; matched; fitting; precise.,easy,4
+jump,adverb,Exactly; precisely,easy,4
+jump,noun,An occasion when a performer or team of them (especially in vaudeville) expects to perform at a theater for a single evening.,easy,4
+laugh,noun,An expression of mirth particular to the human species; the sound heard in laughing; laughter.,easy,5
+laugh,verb,"To show mirth, satisfaction, or derision, by peculiar movement of the muscles of the face, particularly of the mouth, causing a lighting up of the face and eyes, and usually accompanied by the emission of explosive or chuckling sounds from the chest and throat; to indulge in laughter.",easy,5
+flower,noun,"A colorful, conspicuous structure associated with angiosperms, frequently scented and attracting various insects, and which may or may not be used for sexual reproduction.",easy,6
+flower,verb,To put forth blooms.,easy,6
+sunny,noun,A sunfish.,easy,5
+sunny,adjective,(of weather or a day) Featuring a lot of sunshine.,easy,5
+sunny,adverb,Sunny side up,easy,5
+house,noun,A structure built or serving as an abode of human beings.,easy,5
+happy,noun,"A happy event, thing, person, etc.",easy,5
+happy,noun,Preceded by the: happy people as a group.,easy,5
+happy,verb,"Often followed by up: to become happy; to brighten up, to cheer up.",easy,5
+happy,adjective,"Having a feeling arising from a consciousness of well-being or of enjoyment; enjoying good of any kind, such as comfort, peace, or tranquillity; blissful, contented, joyous.",easy,5
+diplomatic,noun,"The science of diplomas, or the art of deciphering ancient writings and determining their age, authenticity, etc.; paleography.",medium,10
+diplomatic,adjective,Concerning the relationships between the governments of countries.,medium,10
+tactful,adjective,Possessing tact; able to deal with people in a sensitive manner.,medium,7
+considerate,verb,To think about seriously.,medium,11
+considerate,adjective,Consciously thoughtful and observant (often of other people); caring,medium,11
+courteous,adjective,"Showing regard or thought for others; especially, displaying good manners or etiquette.",medium,9
+agreeable,noun,Something pleasing; anything that is agreeable.,medium,9
+agreeable,adjective,"Pleasing, either to the mind or senses; pleasant; grateful.",medium,9
+harmonious,adjective,Showing accord in feeling or action.,medium,10
+peaceful,adjective,Not at war or disturbed by strife or turmoil.,medium,8
+tranquil,adjective,Free from emotional or mental disturbance.,medium,8
+serene,noun,Serenity; clearness; calmness.,medium,6
+serene,verb,To make serene.,medium,6
+serene,adjective,"Peaceful, calm, unruffled.",medium,6
+mellow,noun,A relaxed mood.,medium,6
+mellow,verb,To make mellow; to relax or soften.,medium,6
+mellow,adjective,Soft or tender by reason of ripeness; having a tender pulp.,medium,6
+attentive,adjective,"Paying attention; noticing, watching, listening, or attending closely.",medium,9
+efficient,noun,A cause; something that causes an effect,medium,9
+efficient,adjective,"Making good, thorough, or careful use of resources; not consuming extra. Especially, making good use of time or energy",medium,9
+organized,verb,To arrange in working order.,medium,9
+organized,adjective,"Of a person, characterised by efficient organization.",medium,9
+diligent,adjective,Performing with industrious concentration; hard-working and focused.,medium,8
+punctual,adjective,Prompt; on time.,medium,8
+empathetic,adjective,"Showing empathy for others, and recognizing their feelings; empathic",medium,10
+compassionate,verb,To feel compassion (for someone or with regard to something); to regard (someone or something) with compassion.,medium,13
+compassionate,adjective,"Having, feeling or showing compassion (to or toward someone).",medium,13
+thoughtful,adjective,Demonstrating thought or careful consideration.,medium,10
+inventive,adjective,"Of, or relating to invention; pertaining to the act of devising new mechanisms or processes.",medium,9
+perceptive,adjective,"Having or showing keenness of perception, insight, understanding, or intuition.",medium,10
+adaptable,adjective,Capable of adapting or of being adapted.,medium,9
+resourceful,adjective,Capable or clever; able to put available resources to efficient or ingenious use; using materials at hand wisely or efficiently.,medium,11
+independent,noun,"A candidate or voter not affiliated with any political party, a freethinker, free of a party platform.",medium,11
+independent,adjective,Not dependent; not contingent or depending on something else; free.,medium,11
+ambitious,adjective,"(of a person or their character) Having or showing ambition; wanting a lot of power, honor, respect, superiority, or other distinction.",medium,9
+optimistic,adjective,Expecting the best in all possible ways.,medium,10
+determined,verb,To set the boundaries or limits of.,medium,10
+determined,adjective,"Decided; resolute, possessing much determination.",medium,10
+forgiving,verb,"To pardon; to waive any negative feeling or desire for punishment, retribution, or compensation.",medium,9
+forgiving,noun,An act of forgiveness.,medium,9
+forgiving,adjective,Inclined to forgive.,medium,9
+generous,adjective,"Noble in behaviour or actions; principled, not petty; kind, magnanimous.",medium,8
+reliable,noun,Something or someone reliable or dependable,medium,8
+reliable,adjective,"Suitable or fit to be relied on; worthy of dependence, reliance or trust; dependable, trustworthy",medium,8
+challenge,noun,A confrontation; a dare.,medium,9
+challenge,verb,To invite (someone) to take part in a competition.,medium,9
+cooperation,noun,(usually uncountable) The act of cooperating.,medium,11
+creativity,noun,The ability to use imagination to produce a novel idea or product that is useful to society.,medium,10
+confidence,noun,Self-assurance.,medium,10
+achievement,noun,The act of achieving or performing; a successful performance; accomplishment,medium,11
+opportunity,noun,"A chance for advancement, progress or profit.",medium,11
+enthusiasm,noun,Possession by a god; divine inspiration or frenzy.,medium,10
+sympathy,noun,A feeling of pity or sorrow for the suffering or distress of another; compassion.,medium,8
+organize,verb,To arrange in working order.,medium,8
+investigate,verb,To inquire into or study in order to ascertain facts or information.,medium,11
+communicate,verb,To impart,medium,11
+imagine,noun,A short fanfic or prompt placing a reader insert in a novel scenario with a character or celebrity.,medium,7
+imagine,verb,To form a mental image of something; to envision or create something in one's mind.,medium,7
+yoke,noun,"Frame around the neck, and related senses.",hard,4
+yoke,verb,To link or to join.,hard,4
+vexation,noun,"The act of annoying, vexing, or irritating.",hard,8
+trepidation,noun,A fearful state; a state of concern or hesitation.,hard,11
+relegate,verb,"Exile, banish, remove, or send away.",hard,8
+peregrinate,verb,"To travel from place to place, or from one country to another, especially on foot; hence, to sojourn in foreign countries.",hard,11
+obstreperous,adjective,"Attended by, or making, a loud and tumultuous noise; boisterous.",hard,12
+neophyte,noun,"A beginner; a person who is new to a subject, skill, or belief.",hard,8
+malediction,noun,A curse.,hard,11
+lugubrious,adjective,"Gloomy, mournful or dismal, especially to an exaggerated degree.",hard,10
+kowtow,noun,The act of kowtowing.,hard,6
+kowtow,verb,"To grovel, act in a very submissive manner.",hard,6
+inchoate,noun,"A beginning, an immature start.",hard,8
+inchoate,verb,To begin or start (something).,hard,8
+inchoate,adjective,Recently started but not fully formed yet; just begun; only elementary or immature.,hard,8
+histrionic,adjective,Of or relating to actors or acting.,hard,10
+garrulous,adjective,Excessively or tiresomely talkative.,hard,9
+foment,noun,Fomentation.,hard,6
+foment,verb,To incite or cause troublesome acts; to encourage; to instigate.,hard,6
+efficacious,adjective,Effective; possessing efficacy.,hard,11
+bellicose,adjective,Warlike in nature; aggressive; hostile.,hard,9
+abrogate,verb,"To annul by an authoritative act; to abolish by the authority of the maker or her or his successor; to repeal; — applied to the repeal of laws, decrees, ordinances, the abolition of customs, etc.",hard,8
+abrogate,adjective,Abrogated; abolished.,hard,8
+egocentric,noun,A person who is egocentric.,hard,10
+egocentric,adjective,"Selfish, self-centered",hard,10
+imperious,adjective,"Domineering, arrogant, or overbearing.",hard,9
+presumptuous,adjective,"Going beyond what is right, proper, or appropriate because of an excess of self-confidence or arrogance.",hard,12
+effervescent,adjective,(of a liquid) Giving off bubbles; fizzy.,hard,12
+temerity,noun,Reckless boldness; foolish bravery.,hard,8
+despondent,adjective,In low spirits from loss of hope or courage.,hard,10
+gloomy,adjective,"Not very illuminated; dim because of darkness, especially when appearing depressing or frightening.",hard,6
+sullen,noun,"One who is solitary, or lives alone; a hermit.",hard,6
+sullen,adjective,Having a brooding ill temper; sulky.,hard,6
+morose,adjective,"Sullen, gloomy; showing a brooding ill humour.",hard,6
+austere,adjective,Grim or severe in manner or appearance,hard,7
+meander,noun,"A decorative border constructed from a continuous line, shaped into a repeated motif, that is commonly found in Greek art.",hard,7
+meander,noun,"One of the turns of a winding, crooked, or involved course.",hard,7
+meander,verb,To wind or turn in a course or passage; to be intricate.,hard,7
+loquacious,adjective,Talkative; chatty.,hard,10
+gregarious,adjective,(of a person) Describing one who enjoys being in crowds and socializing.,hard,10
+ostentatious,adjective,Of ostentation.,hard,12
+conspicuous,adjective,Obvious or easy to notice.,hard,11
+circumspect,adjective,Carefully aware of all circumstances; considerate of all that is pertinent.,hard,11
+prudent,adjective,"Sagacious in adapting means to ends; circumspect in action, or in determining any line of conduct; careful, discreet, sensible; — opposed to rash; directed by prudence or wise forethought; evincing prudence",hard,7
+discerning,verb,"To detect with the senses, especially with the eyes.",hard,10
+discerning,noun,Discernment,hard,10
+discerning,adjective,Of keen insight or good judgement; perceptive.,hard,10
+cerebral,adjective,"Of, or relating to the brain, cerebrum, or cerebral cortex.",hard,8
+perspicacious,adjective,Of acute discernment; having keen insight; mentally perceptive.,hard,13
+prescient,adjective,"Exhibiting or possessing prescience: having knowledge of, or seemingly able to correctly predict, events before they take place.",hard,9
+erudite,noun,A learned or scholarly person,hard,7
+erudite,adjective,"Learned, scholarly, with emphasis on knowledge gained from books.",hard,7
+imperturbable,adjective,"Not easily perturbed, upset or excited.",hard,13
+urbane,adjective,"(of a man) Courteous, polite, refined, and suave.",hard,6
+perseverance,noun,"Continuing in a course of action without regard to discouragement, opposition or previous failure.",hard,12
+tenacious,adjective,Clinging to an object or surface; adhesive.,hard,9
+astute,adjective,Quickly and critically discerning.,hard,6
+conundrum,noun,"A difficult question or riddle, especially one using a play on words in the answer.",hard,9
+imperative,noun,"(grammar) The grammatical mood expressing an order (see jussive). In English, the imperative form of a verb is the same as that of the bare infinitive.",hard,10
+imperative,adjective,Essential; crucial; extremely important.,hard,10
+laconic,adjective,Using as few words as possible; pithy and concise.,hard,7
+exuberant,adjective,(of people) Very high-spirited; extremely energetic and enthusiastic.,hard,9
+benign,adjective,Kind; gentle; mild.,hard,6
+impervious,adjective,Unaffected or unable to be affected by something.,hard,10
+trepidation,noun,A fearful state; a state of concern or hesitation.,hard,11
+nostalgic,noun,A person who displays nostalgia for something.,hard,9
+nostalgic,adjective,"Of, having, or relating to nostalgia.",hard,9
+stoic,noun,"Proponent of stoicism, a school of thought, from in 300 B.C.E. up to about the time of Marcus Aurelius, who holds that by cultivating an understanding of the logos, or natural law, one can be free of suffering.",hard,5
+stoic,adjective,Of or relating to the Stoics or their ideas.,hard,5
+enigmatic,adjective,Pertaining to an enigma.,hard,9
+audacious,adjective,Showing willingness to take bold risks; recklessly daring.,hard,9
+meticulous,adjective,"Characterized by very precise, conscientious attention to details.",hard,10
+impertinent,noun,An impertinent individual.,hard,11
+impertinent,adjective,"Insolent, ill-mannered",hard,11
+voracious,adjective,Wanting or devouring great quantities of food.,hard,9
+ambiguous,adjective,Open to multiple interpretations.,hard,9
+sophisticated,verb,To make less natural or innocent.,hard,13
+sophisticated,adjective,"Having obtained worldly experience, and lacking naiveté; cosmopolitan.",hard,13
+alacrity,noun,Eagerness; liveliness; enthusiasm.,extreme,8
+sanguine,noun,Blood colour; red.,extreme,8
+sanguine,verb,To stain with blood; to impart the colour of blood to; to ensanguine.,extreme,8
+sanguine,adjective,Having the colour of blood; blood red.,extreme,8
+magnanimous,adjective,Noble and generous in spirit.,extreme,11
+ubiquitous,adjective,Being everywhere at once: omnipresent.,extreme,10
+penchant,noun,"Taste, liking, or inclination (for).",extreme,8
+obfuscate,verb,To make dark; overshadow,extreme,9
+obfuscate,adjective,Obfuscated; darkened; obscured.,extreme,9
+proclivity,noun,"A predisposition or natural inclination, propensity, or a predilection; especially, a strong disposition or bent.",extreme,10
+anomaly,noun,A deviation from a rule or from what is regarded as normal; an outlier.,extreme,7
+cacophony,noun,A mix of discordant sounds; dissonance.,extreme,9
+pernicious,adjective,Causing much harm in a subtle way.,extreme,10
+ephemeral,noun,Something which lasts for a short period of time.,extreme,9
+ephemeral,adjective,Lasting for a short period of time.,extreme,9
+perspicacious,adjective,Of acute discernment; having keen insight; mentally perceptive.,extreme,13
+zeitgeist,noun,"The spirit of the age; the taste, outlook, and spirit characteristic of a period.",extreme,9
+sagacious,adjective,"Having or showing keen discernment, sound judgment, and farsightedness; mentally shrewd.",extreme,9
+quixotic,adjective,"Possessing or acting with the desire to do noble and romantic deeds, without thought of realism and practicality; exceedingly idealistic.",extreme,8
+ubiquity,noun,"The state or quality of being, or appearing to be, everywhere at once; actual or perceived omnipresence.",extreme,8
+vicissitudes,noun,"Regular change or succession from one thing to another, or one part of a cycle to the next; alternation; mutual succession; interchange.",extreme,12
+serendipitous,adjective,By serendipity; by unexpected good fortune,extreme,13
+ineffable,adjective,Beyond expression in words; unspeakable.,extreme,9
+indefatigable,adjective,Extremely persistent and untiring.,extreme,13
+facilitate,verb,To make easy or easier.,extreme,10
+debauchery,noun,"Indulgence in sensual pleasures; scandalous activities involving sex, alcohol, or drugs without inhibition.",extreme,10
+bolster,noun,A large cushion or pillow.,extreme,7
+bolster,verb,"To brace, reinforce, secure, or support.",extreme,7
+analgesic,noun,"Any medicine, such as aspirin, that reduces pain, especially without inducing a loss of other sensation. (Contrast anesthetic.)",extreme,9
+analgesic,adjective,(pharmaceutical effect) Of or relating to analgesia; anodyne.,extreme,9
+zenith,noun,The point in the sky vertically above a given position or observer; the point in the celestial sphere opposite the nadir.,extreme,6
+welter,noun,A general confusion or muddle.,extreme,6
+welter,verb,To roll around; to wallow.,extreme,6
+verisimilitude,noun,"The property of seeming true, of resembling reality; resemblance to reality, realism.",extreme,14
+transcendental,noun,A transcendentalist.,extreme,14
+transcendental,adjective,"Concerned with the a priori or intuitive basis of knowledge, independent of experience.",extreme,14
+recondite,noun,A recondite (hidden or obscure) person or thing.,extreme,9
+recondite,verb,"To conceal, cover up, hide.",extreme,9
+recondite,adjective,"Of areas of discussion or research: difficult, obscure.",extreme,9
+quintessence,noun,"A thing that is the most perfect example of its type; the most perfect embodiment of something; epitome, prototype.",extreme,12
+quintessence,verb,To reduce to its purest and most concentrated essence.,extreme,12
+paradoxical,adjective,Having self-contradictory properties.,extreme,11
+nonpareil,noun,A person or thing that has no equal; a paragon.,extreme,9
+nonpareil,adjective,"Unequalled, unrivalled; unique.",extreme,9
+microcosm,noun,Human nature or the human body as representative of the wider universe; man considered as a miniature counterpart of divine or universal nature.,extreme,9
+kaleidoscopic,adjective,"Of, relating to, or produced by a kaleidoscope.",extreme,13
+incongruous,adjective,Not similar or congruent; not matching or fitting in.,extreme,11
+circumlocution,noun,A roundabout or indirect way of speaking; the use of more words than necessary to express an idea.,extreme,14
+antithetical,adjective,"Pertaining to antithesis, or opposition of words and sentiments; containing, or of the nature of, antithesis; contrasted.",extreme,12
+didactic,noun,A treatise on teaching or education.,extreme,8
+didactic,adjective,"Instructive or intended to teach or demonstrate, especially with regard to morality.",extreme,8
+pedantic,adjective,"Like a pedant, overly concerned with formal rules and trivial points of learning.",extreme,8
+bombastic,adjective,"(of a person, their language or writing) showy in speech and given to using flowery or elaborate terms; grandiloquent; pompous",extreme,9
+winsome,adjective,"Charming, engaging, winning; inspiring approval and trust, especially if in an innocent manner.",extreme,7
+discombobulated,verb,To throw into a state of confusion; to befuddle or perplex.,extreme,15
+discombobulated,adjective,"Confused, embarrassed, upset.",extreme,15
+inscrutable,noun,"One who or that which is inscrutable; a person, etc. that cannot be comprehended.",extreme,11
+inscrutable,adjective,"Difficult or impossible to comprehend, fathom or interpret.",extreme,11
+epiphany,noun,The appearance of Jesus Christ to the Magi on the twelfth day after Christmas.,extreme,8
+epiphany,noun,"An illuminating realization or discovery, often resulting in a personal feeling of elation, awe, or wonder.",extreme,8
+lachrymose,adjective,"Tearful, sorrowful, sad, pertaining to tears, weeping, causing tears or crying.",extreme,10
+soporific,noun,"Something inducing sleep, especially a drug.",extreme,9
+soporific,adjective,(pharmaceutical effect) Tending to induce sleep.,extreme,9
+dysfunctional,adjective,Not performing its proper or intended function.,extreme,13
+onomatopoeia,noun,The property of a word of sounding like what it represents.,extreme,12
+petrichor,noun,"The distinctive scent, caused by geosmin, which accompanies the first rain after a long, warm, dry spell.",extreme,9
+obsequious,adjective,Obedient; compliant with someone else's orders or wishes.,extreme,10

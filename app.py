@@ -6,18 +6,31 @@ from src.exceptions import InvalidGuess, RepeatGuess
 
 app = Flask(__name__)
 todaydate = date.today().strftime("%A, %B %-d %Y")
+difficulty = "Hard"
 
 
 @app.route("/")
 def landing():
-    global game, lives_remaining, guess_count, answer, answer_complexity
-    game = Thesaurdle()
+    global lives_remaining, guess_count
     lives_remaining = 5
     guess_count = 0
-    answer = game.answer.word
-    answer_complexity = game.answer.complexity
-    print(answer)
     return render_template("landing.html", date=todaydate)
+
+
+@app.route("/select", methods=["POST"])
+def select():
+    global difficulty, game
+    if request.method == "POST":
+        difficulty = request.form["difficulty"]
+        game = Thesaurdle(difficulty=difficulty)
+        return render_template(
+            "index.html",
+            lives=lives_remaining,
+            guess_count=guess_count,
+            init_hint=game.init_hint,
+            date=todaydate,
+            difficulty=difficulty,
+        )
 
 
 @app.route("/restart", methods=["GET"])
@@ -27,18 +40,23 @@ def restart():
 
 @app.route("/home")
 def home():
+    global game, lives_remaining, guess_count, difficulty
     return render_template(
         "index.html",
         lives=lives_remaining,
         guess_count=guess_count,
         init_hint=game.init_hint,
         date=todaydate,
+        difficulty=difficulty,
     )
 
 
 @app.route("/guess", methods=["POST", "GET"])
 def process_guess():
-    global lives_remaining, guess_count, answer
+    global lives_remaining, guess_count, answer, difficulty, game, answer_complexity
+    answer = game.answer.word
+    answer_complexity = game.answer.complexity
+    print(difficulty, answer)
     invalid_guess = False
     if request.method == "POST":
         g = request.form["guess"]
@@ -54,6 +72,7 @@ def process_guess():
                     guess_count=guess_count,
                     init_hint=game.init_hint,
                     date=todaydate,
+                    difficulty=difficulty,
                 )
             else:
                 return render_template(
@@ -74,6 +93,7 @@ def process_guess():
                     guess_count=guess_count,
                     date=todaydate,
                     invalid_guess=invalid_guess,
+                    difficulty=difficulty,
                 )
         except RepeatGuess:
             repeat_guess = True
@@ -97,15 +117,29 @@ def process_guess():
                 lives=int(lives_remaining),
                 guess_count=guess_count,
                 date=todaydate,
+                difficulty=difficulty,
             )
 
         if game.current_guess == answer:
-            return render_template("/win.html", date=todaydate)
+            guess_count += 1
+            return render_template(
+                "/win.html",
+                date=todaydate,
+                formatted_answer=game.formatted_answer,
+                guess_count=guess_count,
+                difficulty=difficulty,
+            )
 
         guess_count += 1
         lives_remaining -= 1
         if lives_remaining < 0:  # lose on the sixth guess
-            return render_template("/lose.html", date=todaydate)
+            return render_template(
+                "/lose.html",
+                date=todaydate,
+                formatted_answer=game.formatted_answer,
+                guess_count=guess_count,
+                difficulty=difficulty,
+            )
 
     return render_template(
         "index.html",
@@ -125,17 +159,19 @@ def process_guess():
         guess_count=guess_count,
         date=todaydate,
         invalid_guess=invalid_guess,
+        difficulty=difficulty,
     )
 
 
 @app.route("/win.html")
 def win():
-    return render_template("win.html", date=todaydate)
+    return render_template("win.html", date=todaydate, difficulty=difficulty)
 
 
 @app.route("/lose.html")
 def lose():
-    return render_template("lose.html", date=todaydate)
+    global difficulty
+    return render_template("lose.html", date=todaydate, difficulty=difficulty)
 
 
 if __name__ == "__main__":

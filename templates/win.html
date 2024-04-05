@@ -23,8 +23,13 @@
           <button type="submit" class="start-button">Restart</button>
         </form>
       </div>
-      <footer>
-        <div class="date-footer"><span class="date">{{date}}</span> | Hard</div>
-      </footer>
+    </div>
+    <div class="hint">{{ formatted_answer }}</div>
+    <div class="hint">Guesses: {{ guess_count }}</div>
+    <footer>
+      <div class="date-footer">
+        <span class="date">{{date}}</span> | {{ difficulty.capitalize() }}
+      </div>
+    </footer>
   </body>
 </html>
