@@ -3,7 +3,7 @@ import random
 from typing import Union, List
 from . import dictionary as dct
 import data.words as words
-from .exceptions import WordNotFound, InvalidGuess
+from .exceptions import WordNotFound, InvalidGuess, RepeatGuess
 from .gpt import GPTHelper
 from .guess import Guess
 
@@ -34,11 +34,14 @@ class Thesaurdle:
     def guess(self, word) -> None:
         guess = Guess(word)
         self.current_guess = guess.word
+        if self.current_guess in [g.word for g in self.guesses]:
+            raise RepeatGuess
+
         self.guesses.append(guess)
-        if self.gameover:
+
+        if self.gameover or self.lives == 0:
             self.lose()
-        if self.lives == 0:
-            self.lose()
+
         if guess.word == self.answer.word:
             self.win()
         else:
@@ -81,6 +84,7 @@ class Thesaurdle:
 
     def judge_definition_similarity(self, guess: Guess, feedback: str) -> None:
         sim = GPTHelper().call_api_for_similarity(guess.word, self.answer.word)
+        self.guess_sim_num = sim
         self.guess_sim = f"{sim} / 5"
 
     def hint(self, guess: Guess, feedback: str) -> None:

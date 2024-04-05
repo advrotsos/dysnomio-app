@@ -12,20 +12,19 @@
     />
   </head>
   <body>
-    <div class="welcome-to"></div>
+    <div class="welcome-to" style="color: white">Welcome to...</div>
     <div class="landing-square">
       <div class="title">
-        <h1 class="title-header">Sorry...</h1>
-        <div class="title-subheader">
-          You lose. Try again tomorrow (or pick another difficulty!)
-        </div>
+        <h1 class="title-header">Sorry. You lose!</h1>
+        <div class="title-subheader">Try again tomorrow (or pick another difficulty!)</div>
       </div>
       <div class="content-buttons">
         <form action="{{ url_for('restart') }}" method="get">
           <button type="submit" class="start-button">Restart</button>
         </form>
       </div>
-    </div>
-    <div class="date">{{ date }}</div>
+      <footer>
+        <div class="date-footer"><span class="date">{{date}}</span> | Hard</div>
+      </footer>
   </body>
 </html>

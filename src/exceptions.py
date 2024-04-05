@@ -4,3 +4,7 @@ class WordNotFound(Exception):
 
 class InvalidGuess(Exception):
     pass
+
+
+class RepeatGuess(Exception):
+    pass

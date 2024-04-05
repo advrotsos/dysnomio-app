@@ -19,12 +19,14 @@
         <div class="title-subheader">[ dĭs-nō′mē-oh ]</div>
       </div>
       <div class="content-buttons">
-        <select>
-          <option value="option1">Easy</option>
-          <option value="option2">Medium</option>
-          <option value="option3">Hard</option>
-          <option value="option4">1600 Verbal</option>
-        </select>
+        <form method="post" name="difficulty-select">
+          <select>
+            <option value="option1">Easy</option>
+            <option value="option2">Medium</option>
+            <option value="option3">Hard</option>
+            <option value="option4">1600 Verbal</option>
+          </select>
+        </form>
         <form action="{{ url_for('home') }}" method="get">
           <button type="submit" class="start-button">Start</button>
         </form>

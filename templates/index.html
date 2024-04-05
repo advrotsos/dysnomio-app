@@ -57,7 +57,7 @@
           <div class="feedback-container">
             <div class="feedback-title">Similarity</div>
             <div
-              class="{% if guess_sim == 4 %}feedback-box-med {% elif guess_sim == 5 %}feedback-box-pos {% else %}feedback-box-neg{% endif %}"
+              class="{% if guess_sim_num == 4 %}feedback-box-med {% elif guess_sim_num == 5 %}feedback-box-pos {% else %}feedback-box-neg{% endif %}"
             >
               <p class="sim-feedback">{{guess_sim}}</p>
             </div>
@@ -74,14 +74,16 @@
       </div>
       <div class="hint">
         {% if guess_count == 0 %} {{init_hint}} {% else %} {{guess_hint}} {%
-        endif %} {% if invalid_guess %}
+        endif %} 
       </div>
+      {% if invalid_guess %}
       <p class="error">Word Not Found. Please Try Again.</p>
-      {% endif %}
+  {% elif repeat_guess %}
+      <p class="error">You already used that guess. Try something new. </p>
+  {% endif %}
+      </div>
       <footer>
-        <div class="date-footer">
-          <span class="date">Tuesday, April 2 2024 </span>| <span>Hard</span>
-        </div>
+        <div class="date-footer"><span class="date">{{date}}</span> | Hard</div>
       </footer>
     </div>
   </body>
