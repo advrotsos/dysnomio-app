@@ -41,7 +41,11 @@ class Thesaurdle:
     def guess(self, word) -> None:
         guess = Guess(word)
         self.current_guess = guess.word
-        if self.current_guess in [g.word for g in self.guesses]:
+
+        if (
+            self.current_guess in [g.word for g in self.guesses]
+            and self.current_guess != self.answer.word
+        ):
             raise RepeatGuess
 
         self.guesses.append(guess)

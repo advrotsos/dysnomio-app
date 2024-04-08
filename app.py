@@ -35,6 +35,9 @@ def select():
 
 @app.route("/restart", methods=["GET"])
 def restart():
+    global lives_remaining, guess_count
+    lives_remaining = 5
+    guess_count = 0
     return redirect(url_for("landing"))
 
 
@@ -130,7 +133,10 @@ def process_guess():
                 difficulty=difficulty,
             )
 
-        guess_count += 1
+        if guess_count < 5:
+            guess_count += 1
+        else:
+            guess_count = 5
         lives_remaining -= 1
         if lives_remaining < 0:  # lose on the sixth guess
             return render_template(
