@@ -23,7 +23,8 @@ class Thesaurdle:
             + f"({self.answer.part_of_speech.capitalize()}): "
             + self.answer.definition
         )
-        self.initial_hint(self.answer.word)
+        # self.initial_hint(self.answer.word)
+        self.guess_hint = ""  # stop-gap to avoid weird interaction in flask app
 
     def play(self) -> None:
         """For every round, submit a guess. Break the loop if you win, else `lose`."""
@@ -41,14 +42,7 @@ class Thesaurdle:
     def guess(self, word) -> None:
         guess = Guess(word)
         self.current_guess = guess.word
-
-        if (
-            self.current_guess in [g.word for g in self.guesses]
-            and self.current_guess != self.answer.word
-        ):
-            raise RepeatGuess
-
-        self.guesses.append(guess)
+        self.process_guess(guess)
 
         if self.gameover or self.lives == 0:
             self.lose()
@@ -56,7 +50,6 @@ class Thesaurdle:
         if guess.word == self.answer.word:
             self.win()
         else:
-            self.process_guess(guess)
             self.lives -= 1
 
     def win(self) -> None:
@@ -101,7 +94,7 @@ class Thesaurdle:
         self.guess_hint = GPTHelper().call_api_for_hints(guess.word, self.answer.word)
 
     def initial_hint(self, answer: str) -> str:
-        self.init_hint = GPTHelper().call_api_for_initial_hint(answer)
+        return GPTHelper().call_api_for_initial_hint(answer)
 
     def retrieve_answer(self, difficulty: str) -> str:
         # Format this better please

@@ -1,102 +1,125 @@
 from datetime import date
-from flask import Flask, redirect, url_for, render_template, request
+from flask import Flask, redirect, url_for, render_template, request, session
 from src.game import Thesaurdle
 from src.exceptions import InvalidGuess, RepeatGuess
 
 
 app = Flask(__name__)
+app.secret_key = "KEY123ABCMUADDIB"
 todaydate = date.today().strftime("%A, %B %-d %Y")
-difficulty = "Hard"
+difficulty: str = "Hard"  # placeholder in case something fails
+lives: int = 5
 
 
 @app.route("/")
 def landing():
-    global lives_remaining, guess_count
-    lives_remaining = 5
-    guess_count = 0
+    session.clear()
     return render_template("landing.html", date=todaydate)
 
 
 @app.route("/select", methods=["POST"])
 def select():
-    global difficulty, game
+    global game
     if request.method == "POST":
         difficulty = request.form["difficulty"]
         game = Thesaurdle(difficulty=difficulty)
+        if "game_state" not in session:
+            session["game_state"] = {
+                "init_hint": game.initial_hint(game.answer.word),
+                "lives_remaining": int(lives),
+                "guess_count": 0,
+                "answer": game.answer.word,
+                "answer_complexity": int(game.answer.complexity),
+                "answer_part_of_speech": game.answer.part_of_speech,
+                "answer_len": int(game.answer.length),
+                "formatted_answer": game.formatted_answer,
+                "difficulty": difficulty,
+                "guesses": [],
+            }
         return render_template(
             "index.html",
-            lives=lives_remaining,
-            guess_count=guess_count,
-            init_hint=game.init_hint,
+            lives=session["game_state"]["lives_remaining"],
+            guess_count=session["game_state"]["guess_count"],
+            init_hint=session["game_state"]["init_hint"],
             date=todaydate,
-            difficulty=difficulty,
+            difficulty=session["game_state"]["difficulty"],
         )
 
 
 @app.route("/restart", methods=["GET"])
 def restart():
-    global lives_remaining, guess_count
-    lives_remaining = 5
-    guess_count = 0
+    session.clear()
     return redirect(url_for("landing"))
-
-
-@app.route("/home")
-def home():
-    global game, lives_remaining, guess_count, difficulty
-    return render_template(
-        "index.html",
-        lives=lives_remaining,
-        guess_count=guess_count,
-        init_hint=game.init_hint,
-        date=todaydate,
-        difficulty=difficulty,
-    )
 
 
 @app.route("/guess", methods=["POST", "GET"])
 def process_guess():
-    global lives_remaining, guess_count, answer, difficulty, game, answer_complexity
-    answer = game.answer.word
-    answer_complexity = game.answer.complexity
-    print(difficulty, answer)
+    if "lives_remaining" not in session:
+        session["lives_remaining"] = 5
+    if "guess_count" not in session:
+        session["guess_count"] = 0
+    print(session["game_state"]["difficulty"], session["game_state"]["answer"])
     invalid_guess = False
     if request.method == "POST":
         g = request.form["guess"]
         try:
+            game = Thesaurdle(difficulty=session["game_state"]["difficulty"])
+            game.init_hint = session["game_state"]["init_hint"]
+            game.answer.word = session["game_state"]["answer"]
+            game.answer.complexity = session["game_state"]["answer_complexity"]
             game.guess(g)
+            if game.current_guess in session["game_state"]["guesses"]:
+                raise RepeatGuess
+            session["game_state"]["guesses"].append(game.current_guess)
+            session["game_state"]["last_guess"] = game.current_guess
+            session["game_state"]["last_guess_hint"] = game.guess_hint
+            session["game_state"][
+                "last_guess_part_of_speech"
+            ] = game.guess_part_of_speech
+            session["game_state"]["last_guess_lendiff"] = int(game.lendiff)
+            session["game_state"]["last_guess_word_len"] = int(game.guess_word_len)
+            session["game_state"]["last_guess_complexity"] = game.guess_complexity
+            session["game_state"]["last_guess_compdiff"] = int(game.compdiff)
+            session["game_state"]["last_guess_sim"] = game.guess_sim
+            session["game_state"]["last_guess_sim_num"] = int(
+                game.guess_sim_num.strip(".")
+            )
         except InvalidGuess:
             invalid_guess = True
-            if guess_count == 0:
+            if session["guess_count"] == 0:
                 return render_template(
                     "index.html",
                     invalid_guess=invalid_guess,
-                    lives=lives_remaining,
-                    guess_count=guess_count,
-                    init_hint=game.init_hint,
+                    lives=session["lives_remaining"],
+                    guess_count=session["guess_count"],
+                    init_hint=session["game_state"]["init_hint"],
                     date=todaydate,
-                    difficulty=difficulty,
+                    difficulty=session["game_state"]["difficulty"],
                 )
             else:
                 return render_template(
                     "index.html",
-                    guess_hint=game.guess_hint,
-                    init_hint=game.init_hint,
-                    guess_part_of_speech=game.guess_part_of_speech,
-                    answer_part_of_speech=game.answer.part_of_speech,
-                    lendiff=game.lendiff,
-                    answer_word_len=game.answer.length,
-                    guess_word_len=game.guess_word_len,
-                    guess_complexity=game.guess_complexity,
-                    compdiff=game.compdiff,
-                    answer_complexity=answer_complexity,
-                    guess_sim=game.guess_sim,
-                    guess_sim_num=int(game.guess_sim_num.strip(".")),
-                    lives=int(lives_remaining),
-                    guess_count=guess_count,
+                    guess_hint=session["game_state"]["last_guess_hint"],
+                    init_hint=session["game_state"]["init_hint"],
+                    guess_part_of_speech=session["game_state"][
+                        "last_guess_part_of_speech"
+                    ],
+                    answer_part_of_speech=session["game_state"][
+                        "answer_part_of_speech"
+                    ],
+                    lendiff=session["game_state"]["last_guess_word_len"],
+                    answer_word_len=session["game_state"]["answer_len"],
+                    guess_word_len=session["game_state"]["last_guess_word_len"],
+                    guess_complexity=session["game_state"]["last_guess_complexity"],
+                    compdiff=session["game_state"]["last_guess_compdiff"],
+                    answer_complexity=session["game_state"]["answer_complexity"],
+                    guess_sim=session["game_state"]["last_guess_sim"],
+                    guess_sim_num=int(session["game_state"]["last_guess_sim_num"]),
+                    lives=int(session["lives_remaining"]),
+                    guess_count=session["guess_count"],
                     date=todaydate,
                     invalid_guess=invalid_guess,
-                    difficulty=difficulty,
+                    difficulty=session["game_state"]["difficulty"],
                 )
         except RepeatGuess:
             repeat_guess = True
@@ -105,79 +128,84 @@ def process_guess():
                 "index.html",
                 repeat_guess=repeat_guess,
                 invalid_guess=invalid_guess,  # Pass invalid_guess to the template
-                guess_hint=game.guess_hint,
-                init_hint=game.init_hint,
-                guess_part_of_speech=game.guess_part_of_speech,
-                answer_part_of_speech=game.answer.part_of_speech,
-                lendiff=game.lendiff,
-                answer_word_len=game.answer.length,
-                guess_word_len=game.guess_word_len,
-                guess_complexity=game.guess_complexity,
-                compdiff=game.compdiff,
-                answer_complexity=answer_complexity,
-                guess_sim=game.guess_sim,
-                guess_sim_num=int(game.guess_sim_num),
-                lives=int(lives_remaining),
-                guess_count=guess_count,
+                guess_hint=session["game_state"]["last_guess_hint"],
+                init_hint=session["game_state"]["init_hint"],
+                guess_part_of_speech=session["game_state"]["last_guess_part_of_speech"],
+                answer_part_of_speech=session["game_state"]["answer_part_of_speech"],
+                lendiff=session["game_state"]["last_guess_lendiff"],
+                answer_word_len=session["game_state"]["answer_len"],
+                guess_word_len=session["game_state"]["last_guess_word_len"],
+                guess_complexity=session["game_state"]["last_guess_complexity"],
+                compdiff=session["game_state"]["last_guess_compdiff"],
+                answer_complexity=session["game_state"]["answer_complexity"],
+                guess_sim=session["game_state"]["last_guess_sim"],
+                guess_sim_num=int(session["game_state"]["last_guess_sim_num"]),
+                lives=int(session["lives_remaining"]),
+                guess_count=session["guess_count"],
                 date=todaydate,
-                difficulty=difficulty,
+                difficulty=session["game_state"]["difficulty"],
             )
 
-        if game.current_guess == answer:
-            guess_count += 1
+        if session["game_state"]["last_guess"] == session["game_state"]["answer"]:
+            print("good")
+            session["guess_count"] += 1
             return render_template(
                 "/win.html",
                 date=todaydate,
-                formatted_answer=game.formatted_answer,
-                guess_count=guess_count,
-                difficulty=difficulty,
+                formatted_answer=session["game_state"]["formatted_answer"],
+                guess_count=session["guess_count"],
+                difficulty=session["game_state"]["difficulty"],
             )
 
-        if guess_count < 5:
-            guess_count += 1
+        if session["guess_count"] < 5:
+            session["guess_count"] += 1
         else:
-            guess_count = 5
-        lives_remaining -= 1
-        if lives_remaining < 0:  # lose on the sixth guess
+            session["guess_count"] = 5
+        session["lives_remaining"] -= 1
+        if session["lives_remaining"] < 0:  # lose on the sixth guess
             return render_template(
                 "/lose.html",
                 date=todaydate,
-                formatted_answer=game.formatted_answer,
-                guess_count=guess_count,
-                difficulty=difficulty,
+                formatted_answer=session["game_state"]["formatted_answer"],
+                guess_count=session["guess_count"],
+                difficulty=session["game_state"]["difficulty"],
             )
 
     return render_template(
         "index.html",
-        guess_hint=game.guess_hint,
-        init_hint=game.init_hint,
-        guess_part_of_speech=game.guess_part_of_speech,
-        answer_part_of_speech=game.answer.part_of_speech,
-        lendiff=game.lendiff,
-        answer_word_len=game.answer.length,
-        guess_word_len=game.guess_word_len,
-        guess_complexity=game.guess_complexity,
-        compdiff=game.compdiff,
-        answer_complexity=answer_complexity,
-        guess_sim=game.guess_sim,
-        guess_sim_num=int(game.guess_sim_num),
-        lives=int(lives_remaining),
-        guess_count=guess_count,
+        guess_hint=session["game_state"]["last_guess_hint"],
+        init_hint=session["game_state"]["init_hint"],
+        guess_part_of_speech=session["game_state"]["last_guess_part_of_speech"],
+        answer_part_of_speech=session["game_state"]["answer_part_of_speech"],
+        lendiff=session["game_state"]["last_guess_lendiff"],
+        answer_word_len=session["game_state"]["answer_len"],
+        guess_word_len=session["game_state"]["last_guess_word_len"],
+        guess_complexity=session["game_state"]["last_guess_complexity"],
+        compdiff=session["game_state"]["last_guess_compdiff"],
+        answer_complexity=session["game_state"]["answer_complexity"],
+        guess_sim=session["game_state"]["last_guess_sim"],
+        guess_sim_num=int(session["game_state"]["last_guess_sim_num"]),
+        lives=int(session["lives_remaining"]),
+        guess_count=session["guess_count"],
         date=todaydate,
         invalid_guess=invalid_guess,
-        difficulty=difficulty,
+        difficulty=session["game_state"]["difficulty"],
     )
 
 
 @app.route("/win.html")
 def win():
-    return render_template("win.html", date=todaydate, difficulty=difficulty)
+    return render_template(
+        "win.html", date=todaydate, difficulty=session["game_state"]["difficulty"]
+    )
 
 
 @app.route("/lose.html")
 def lose():
     global difficulty
-    return render_template("lose.html", date=todaydate, difficulty=difficulty)
+    return render_template(
+        "lose.html", date=todaydate, difficulty=session["game_state"]["difficulty"]
+    )
 
 
 if __name__ == "__main__":
