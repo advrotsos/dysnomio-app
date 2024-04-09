@@ -13,7 +13,7 @@ class GPTHelper:
     def call_api_for_complexity(self, word: str) -> None:
         self.complexity_model_user_role = f"On a scale of 1-5, how would you rate the complexity of the word {word}? \
                                             Be strict - give simple or common words low scores. \
-                                            Return the response as a single number. "
+                                            Return the response as a single integer number. "
 
         self.complexity_model = self.client.chat.completions.create(
             model=self.model,
@@ -27,7 +27,7 @@ class GPTHelper:
 
     def call_api_for_similarity(self, guess: str, answer: str) -> str:
         self.similarity_model_user_role = f"On a scale of 1-5, how similar are the definitions of {guess} and {answer}. \
-                                            Return the response as a single number. "
+                                            Return the response as a single integer number. "
 
         self.similarity_model = self.client.chat.completions.create(
             model=self.model,
