@@ -23,7 +23,7 @@ class GPTHelper:
             ],
         )
 
-        return self.complexity_model.choices[0].message.content
+        return self.complexity_model.choices[0].message.content.strip(".")
 
     def call_api_for_similarity(self, guess: str, answer: str) -> str:
         self.similarity_model_user_role = f"On a scale of 1-5, how similar are the definitions of {guess} and {answer}. \
@@ -34,7 +34,7 @@ class GPTHelper:
             messages=[{"role": "user", "content": self.similarity_model_user_role}],
         )
 
-        return self.similarity_model.choices[0].message.content
+        return self.similarity_model.choices[0].message.content.strip(".")
 
     def call_api_for_hints(self, guess: str, answer: str) -> str:
         self.hint_model_system_role = roles.hint_model_system_roles.get("v3")
