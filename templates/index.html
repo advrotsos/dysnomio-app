@@ -63,6 +63,55 @@
             </div>
           </div>
         </div>
+        <dialog id="helpDialog">
+          <!-- Add your help content here -->
+          <p style="text-align: center; font-weight: bold;">How to play Dysnomio</p>
+          <p>
+            Dysnomio is a word-guessing designed to be challenging, fun, and educational. The objective is simple: guess the correct word!
+          </p>
+          <p>
+            Your responses are judged on four criteria:
+            <ol>
+              <li>Part of Speech
+                <ul>
+                  <li>This one is simple. <em>All</em> the accepted parts of speech for your guess will be considered.</li>
+                </ul>
+              </li>
+              <li>Length
+                <ul>
+                  <li>Again, this is simple. The length of the word is how many letters are in it!</li>
+                </ul>
+              </li>
+              <li>Complexity
+                <ul>
+                  <li>Your guess will be judged on a 1-5 scale for complexity, where a 1 would be a common, simple word. A 5 would be a complex, less commonly used word. Think SAT vocabulary!</li>
+                </ul>
+              </li>
+              <li>Similarity
+                <ul>
+                  <li>The definition for your guess will be compared to the answer, and a 1-5 score will be returned. A 1 indicates the words are quite different, while a 5 implies the words are near-synonyms.</li>
+                </ul>
+              </li>
+            </ol>
+          </p>
+          <p>
+            Every guess, the "feedback boxes" will update with the corresponding information for your guess, and will be colored based on how close you are to the answer. A yellow feedback box indicates you are close, while a green feedback box tells you you're spot on!
+          </p>
+          <p>
+            Naturally, it works differently for every criteria. Here are some tips.
+            <ul>
+              <li>The feedback box for Part of Speech can never be yellow; it's green or nothing!</li>
+              <li>The Length feedback box will be green if your guess is within 2 of answer's length.</li>
+              <li>The same goes for the Complexity feedback box -- if you're within 2, expect a yellow box.</li>
+              <li>For the Similarity feedback box, a 4 will return a yellow box, and a 5 will be green.</li>
+            </ul>
+          </p>
+          
+          <button onclick="document.getElementById('helpDialog').open = false" style="display: block; margin: 0 auto;">
+            Close
+          </button>
+          
+        </dialog>
 
         <div class="lives-container">
           {% for _ in range(guess_count) %}
@@ -77,13 +126,19 @@
         endif %} 
       </div>
       {% if invalid_guess %}
-      <p class="error">Word Not Found. Please Try Again.</p>
-  {% elif repeat_guess %}
-      <p class="error">You already used that guess. Try something new. </p>
-  {% endif %}
+      <div class="error-box">  
+        <p class="error">Word Not Found. Please Try Again.</p>
+        {% elif repeat_guess %}
+            <p class="error">You already used that guess. Try something new. </p>
+        {% endif %}
       </div>
+      </div>
+    </div>
       <footer>
         <div class="date-footer"><span class="date">{{date}}</span> | {{ difficulty.capitalize() }}</div>
+        <div class="footer-buttons">
+          <form action="{{ url_for('restart')}}" class="footer-button"> <button>Quit</button> </form>
+          <button onclick="document.getElementById('helpDialog').open = true" class="footer-button">Help</button>
       </footer>
     </div>
   </body>

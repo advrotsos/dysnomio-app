@@ -30,7 +30,8 @@ hint_model_user_roles = {
     "v2": "The player provided the guess {guess}. \
             Provide a hint that helps the player correctly name the answer: {answer}. \
                 Provde the response in the format: 'Hint: ...'. \
-                    EXTREMELY IMPORTANT: NEVER use the word {answer} anywhere in your response. ",
+                    EXTREMELY IMPORTANT: NEVER use the word {answer} anywhere in your response. \
+                        EXTREMELY IMPORTANT: Ensure the hint helps the user guess {answer}, not {guess}. ",
 }
 
 

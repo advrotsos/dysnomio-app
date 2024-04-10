@@ -47,7 +47,8 @@ p {
 .content-buttons {
   display: flex;
   align-items: center;
-  margin-bottom: 125px;
+  margin-bottom: 66px;
+  margin-top: 66px;
 }
 .content-buttons select {
   margin-right: 50px;
@@ -118,4 +119,19 @@ footer {
   margin-left: auto;
   margin-right: auto;
   font-weight: lighter;
+}
+
+.help-button-box {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  display: flex;
+  font-weight: lighter;
+  height: 70%;
+}
+
+.help-button {
+  height: 40px;
+  width: 100px;
 }

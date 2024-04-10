@@ -16,7 +16,7 @@ p {
 
 .title-header {
   text-align: center;
-  padding-top: 2rem;
+  padding-top: 0.75rem;
   margin-bottom: 10px;
   font-weight: normal;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
@@ -120,7 +120,7 @@ p {
 .hint {
   padding-top: 10px;
   padding-bottom: 0px;
-  width: 500px;
+  width: 650px;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -129,10 +129,13 @@ p {
   margin-left: auto;
   margin-right: auto;
   font-weight: lighter;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 10px;
 }
 
 .lives-container {
-  padding-top: 20px;
+  padding-top: 10px;
   display: flex;
 }
 
@@ -201,6 +204,18 @@ footer {
   width: 100%;
   bottom: 20px;
   font-weight: lighter;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-button {
+  margin-right: 10px;
+  margin-top: 10px;
 }
 
 /* 
@@ -223,4 +238,18 @@ footer {
   margin-right: auto;
   font-weight: lighter;
   color: red;
+}
+
+dialog {
+  border: solid black 1px;
+  border-radius: 10px;
+  width: 700px;
+  height: 500px;
+  font-size: smaller;
+  padding: 10px;
+}
+
+.close-dialog-button {
+  display: block;
+  margin-top: 0 auto;
 }
