@@ -107,7 +107,7 @@
             </ul>
           </p>
           
-          <button onclick="document.getElementById('helpDialog').open = false" style="display: block; margin: 0 auto;">
+          <button onclick="document.getElementById('helpDialog').open = false" style="display: block; margin: 0 auto; width: 50px; height: 25px;">
             Close
           </button>
           
@@ -137,7 +137,7 @@
       <footer>
         <div class="date-footer"><span class="date">{{date}}</span> | {{ difficulty.capitalize() }}</div>
         <div class="footer-buttons">
-          <form action="{{ url_for('restart')}}" class="footer-button"> <button>Quit</button> </form>
+          <form action="{{ url_for('restart')}}"> <button class="footer-button">Quit</button> </form>
           <button onclick="document.getElementById('helpDialog').open = true" class="footer-button">Help</button>
       </footer>
     </div>
