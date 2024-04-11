@@ -65,47 +65,63 @@
         </div>
         <dialog id="helpDialog">
           <!-- Add your help content here -->
-          <p style="text-align: center; font-weight: bold;">How to play Dysnomio</p>
-          <p>
-            Dysnomio is a word-guessing designed to be challenging, fun, and educational. The objective is simple: guess the correct word!
-          </p>
-          <p>
-            Your responses are judged on four criteria:
+          <div>
+            <p style="text-align: center; font-weight: bold">How to Play: Dysnomio!</p>
+            <p>
+              Dysnomio isn't your average word-guessing game — it's an exhilarating
+              linguistic journey designed to test your vocabulary while keeping the fun
+              alive and challenge! Here's how to play:
+            </p>
             <ol>
-              <li>Part of Speech
-                <ul>
-                  <li>This one is simple. <em>All</em> the accepted parts of speech for your guess will be considered.</li>
-                </ul>
+              <li>
+                <p>
+                  <span style="font-weight: bold">Part of Speech:</span> Throw in nouns,
+                  verbs, adjectives - you name it! All accepted parts of speech will be
+                  considered.
+                </p>
               </li>
-              <li>Length
-                <ul>
-                  <li>Again, this is simple. The length of the word is how many letters are in it!</li>
-                </ul>
+              <li>
+                <p>
+                  <span style="font-weight: bold">Length:</span> How many letters are we
+                  talking? The length of your word holds the key!
+                </p>
               </li>
-              <li>Complexity
-                <ul>
-                  <li>Your guess will be judged on a 1-5 scale for complexity, where a 1 would be a common, simple word. A 5 would be a complex, less commonly used word. Think SAT vocabulary!</li>
-                </ul>
+              <li>
+                <p>
+                  <span style="font-weight: bold">Complexity:</span> Ready to flex your
+                  vocabulary muscles? Your word is rated from 1 to 5. Simple or SAT-level?
+                  Maybe somewhere in between?
+                </p>
               </li>
-              <li>Similarity
-                <ul>
-                  <li>The definition for your guess will be compared to the answer, and a 1-5 score will be returned. A 1 indicates the words are quite different, while a 5 implies the words are near-synonyms.</li>
-                </ul>
+              <li>
+                <p>
+                  <span style="font-weight: bold">Similarity:</span> Close, but not quite!
+                  How closely does the definition of your guess match the answer's? Get your 1 to 5 score to
+                  find out!
+                </p>
               </li>
             </ol>
-          </p>
-          <p>
-            Every guess, the "feedback boxes" will update with the corresponding information for your guess, and will be colored based on how close you are to the answer. A yellow feedback box indicates you are close, while a green feedback box tells you you're spot on!
-          </p>
-          <p>
-            Naturally, it works differently for every criteria. Here are some tips.
+            <p>Watch out for the colorful feedback boxes after each guess:</p>
             <ul>
-              <li>The feedback box for Part of Speech can never be yellow; it's green or nothing!</li>
-              <li>The Length feedback box will be green if your guess is within 2 of answer's length.</li>
-              <li>The same goes for the Complexity feedback box -- if you're within 2, expect a yellow box.</li>
-              <li>For the Similarity feedback box, a 4 will return a yellow box, and a 5 will be green.</li>
+              <li>Yellow means you're getting warmer.</li>
+              <li>Green means you're right on the money!</li>
             </ul>
-          </p>
+            <p>Remember, each criterion has its twist:</p>
+            <ul>
+              <li>Part of Speech is green or nothing at all; no yellow here!</li>
+              <li>
+                If you hit within 2 letters of the answer's length, you'll see a yellow
+                light for Length.
+              </li>
+              <li>Complexity gets a yellow nod if you're within 2 points.</li>
+              <li>
+                Score a 4 on Similarity, and you'll see a hint of yellow. But hit a 5, and
+                it's green lights all the way!
+              </li>
+            </ul>
+            <p>Ready to learn? Let the guessing games begin!</p>
+          </div>
+          
           
           <button onclick="document.getElementById('helpDialog').open = false" style="display: block; margin: 0 auto; width: 50px; height: 25px;">
             Close
