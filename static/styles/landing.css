@@ -120,18 +120,3 @@ footer {
   margin-right: auto;
   font-weight: lighter;
 }
-
-.help-button-box {
-  text-align: center;
-  padding: 0;
-  margin: 0;
-  justify-content: center;
-  display: flex;
-  font-weight: lighter;
-  height: 70%;
-}
-
-.help-button {
-  height: 40px;
-  width: 100px;
-}

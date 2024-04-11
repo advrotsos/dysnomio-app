@@ -35,6 +35,7 @@ def select():
                 "formatted_answer": game.formatted_answer,
                 "difficulty": difficulty,
                 "guesses": [],
+                "hints": [],
             }
         return render_template(
             "index.html",
