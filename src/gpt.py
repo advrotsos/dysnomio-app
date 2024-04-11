@@ -23,7 +23,12 @@ class GPTHelper:
             ],
         )
 
-        return self.complexity_model.choices[0].message.content.strip(".")
+        try:
+            return int(self.complexity_model.choices[0].message.content.strip("."))
+        except ValueError as e:
+            # if gpt returns sentence, strip the period and grab the last char
+            # with should be the number...
+            return int(self.complexity_model.choices[0].message.content.strip(".")[-1])
 
     def call_api_for_similarity(self, guess: str, answer: str) -> str:
         self.similarity_model_user_role = f"On a scale of 1-5, how similar are the definitions of {guess} and {answer}. \
