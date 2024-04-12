@@ -5,12 +5,13 @@ from src.exceptions import InvalidGuess, RepeatGuess
 
 
 app = Flask(__name__)
-app.jinja_env.filters["zip"] = zip  # add zip()
-import jinja2
 
+import jinja2
+app.jinja_env.filters["zip"] = zip  # add zip()
 env = jinja2.Environment()
 env.globals.update(zip=zip)
 app.secret_key = "KEY123ABCMUADDIB"
+
 todaydate = date.today().strftime("%A, %B %-d %Y")
 difficulty: str = "Hard"  # placeholder in case something fails
 lives: int = 5

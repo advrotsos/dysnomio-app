@@ -77,7 +77,7 @@ class Thesaurdle:
             )
 
     def judge_len(self, guess: Guess, feedback: str) -> None:
-        lendiff = guess.length - self.answer.length
+        lendiff = guess.length - len(self.answer.word)
         self.lendiff = abs(lendiff)
         self.guess_word_len = guess.length
 
