@@ -36,6 +36,7 @@ def select():
                 "difficulty": difficulty,
                 "guesses": [],
                 "hints": [],
+                "guess_feedback": {},
             }
         return render_template(
             "index.html",
@@ -68,23 +69,62 @@ def process_guess():
             game.init_hint = session["game_state"]["init_hint"]
             game.answer.word = session["game_state"]["answer"]
             game.answer.complexity = session["game_state"]["answer_complexity"]
+            guess_feedback = []
             game.guess(g)
             if game.current_guess in session["game_state"]["guesses"]:
                 raise RepeatGuess
             session["game_state"]["guesses"].append(game.current_guess)
             session["game_state"]["last_guess"] = game.current_guess
+            session["game_state"]["hints"].append(game.guess_hint)
             session["game_state"]["last_guess_hint"] = game.guess_hint
             session["game_state"][
                 "last_guess_part_of_speech"
             ] = game.guess_part_of_speech
+            # assess part of speech
+            if (
+                session["game_state"]["answer_part_of_speech"]
+                in session["game_state"]["last_guess_part_of_speech"]
+            ):
+                print("pos: 2")
+                guess_feedback.append(2)
+            else:
+                print("pos: 0")
+                guess_feedback.append(0)
             session["game_state"]["last_guess_lendiff"] = int(game.lendiff)
+            # assess lendiff
+            if session["game_state"]["last_guess_lendiff"] == 0:
+                print("last_guess_lendiff: 2")
+                guess_feedback.append(2)
+            elif session["game_state"]["last_guess_lendiff"] in [1, 2]:
+                print("last_guess_lendiff: 1")
+                guess_feedback.append(1)
+            else:
+                print("last_guess_lendiff: 0")
+                guess_feedback.append(0)
             session["game_state"]["last_guess_word_len"] = int(game.guess_word_len)
             session["game_state"]["last_guess_complexity"] = game.guess_complexity
             session["game_state"]["last_guess_compdiff"] = int(game.compdiff)
+            # assess compdiff
+            if int(session["game_state"]["last_guess_compdiff"]) == 0:
+                guess_feedback.append(2)
+            elif int(session["game_state"]["last_guess_compdiff"]) in [1, 2]:
+                guess_feedback.append(1)
+            else:
+                guess_feedback.append(0)
             session["game_state"]["last_guess_sim"] = game.guess_sim
             session["game_state"]["last_guess_sim_num"] = int(
                 game.guess_sim_num.strip(".")
             )
+            # assess sim num
+            if session["game_state"]["last_guess_sim_num"] == 5:
+                guess_feedback.append(2)
+            elif session["game_state"]["last_guess_sim_num"] == 4:
+                guess_feedback.append(1)
+            else:
+                print("last_guess_sim_num: 0")
+            session["game_state"]["guess_feedback"][
+                str(session["guess_count"])
+            ] = guess_feedback
         except InvalidGuess:
             invalid_guess = True
             if session["guess_count"] == 0:
@@ -158,12 +198,12 @@ def process_guess():
                 difficulty=session["game_state"]["difficulty"],
             )
 
-        if session["guess_count"] < 5:
+        if int(session["guess_count"]) < 5:
             session["guess_count"] += 1
         else:
             session["guess_count"] = 5
         session["lives_remaining"] -= 1
-        if session["lives_remaining"] < 0:  # lose on the sixth guess
+        if int(session["lives_remaining"]) < 0:  # lose on the sixth guess
             return render_template(
                 "/lose.html",
                 date=todaydate,
