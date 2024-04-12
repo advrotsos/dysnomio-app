@@ -5,6 +5,11 @@ from src.exceptions import InvalidGuess, RepeatGuess
 
 
 app = Flask(__name__)
+app.jinja_env.filters["zip"] = zip  # add zip()
+import jinja2
+
+env = jinja2.Environment()
+env.globals.update(zip=zip)
 app.secret_key = "KEY123ABCMUADDIB"
 todaydate = date.today().strftime("%A, %B %-d %Y")
 difficulty: str = "Hard"  # placeholder in case something fails
@@ -85,21 +90,16 @@ def process_guess():
                 session["game_state"]["answer_part_of_speech"]
                 in session["game_state"]["last_guess_part_of_speech"]
             ):
-                print("pos: 2")
                 guess_feedback.append(2)
             else:
-                print("pos: 0")
                 guess_feedback.append(0)
             session["game_state"]["last_guess_lendiff"] = int(game.lendiff)
             # assess lendiff
             if session["game_state"]["last_guess_lendiff"] == 0:
-                print("last_guess_lendiff: 2")
                 guess_feedback.append(2)
             elif session["game_state"]["last_guess_lendiff"] in [1, 2]:
-                print("last_guess_lendiff: 1")
                 guess_feedback.append(1)
             else:
-                print("last_guess_lendiff: 0")
                 guess_feedback.append(0)
             session["game_state"]["last_guess_word_len"] = int(game.guess_word_len)
             session["game_state"]["last_guess_complexity"] = game.guess_complexity
@@ -121,9 +121,9 @@ def process_guess():
             elif session["game_state"]["last_guess_sim_num"] == 4:
                 guess_feedback.append(1)
             else:
-                print("last_guess_sim_num: 0")
+                guess_feedback.append(0)
             session["game_state"]["guess_feedback"][
-                str(session["guess_count"])
+                str(session["game_state"]["last_guess"])
             ] = guess_feedback
         except InvalidGuess:
             invalid_guess = True
@@ -161,6 +161,9 @@ def process_guess():
                     date=todaydate,
                     invalid_guess=invalid_guess,
                     difficulty=session["game_state"]["difficulty"],
+                    guesses=session["game_state"]["guesses"],
+                    hints=session["game_state"]["hints"],
+                    guess_feedback=session["game_state"]["guess_feedback"],
                 )
         except RepeatGuess:
             repeat_guess = True
@@ -185,6 +188,9 @@ def process_guess():
                 guess_count=session["guess_count"],
                 date=todaydate,
                 difficulty=session["game_state"]["difficulty"],
+                guesses=session["game_state"]["guesses"],
+                hints=session["game_state"]["hints"],
+                guess_feedback=session["game_state"]["guess_feedback"],
             )
 
         if session["game_state"]["last_guess"] == session["game_state"]["answer"]:
@@ -231,6 +237,9 @@ def process_guess():
         date=todaydate,
         invalid_guess=invalid_guess,
         difficulty=session["game_state"]["difficulty"],
+        guesses=session["game_state"]["guesses"],
+        hints=session["game_state"]["hints"],
+        guess_feedback=session["game_state"]["guess_feedback"],
     )
 
 

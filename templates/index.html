@@ -11,11 +11,93 @@
     />
     <title>Dysnomio</title>
   </head>
+<script src="{{ url_for('static', filename='/script.js') }}"></script>
   <body>
     <div class="outer-container">
       <h1 class="title-header">Dysnomio (n.)</h1>
       <div class="title-subheader">[ dĭs-nō′mē-oh ]</div>
-
+      <dialog id="hint-popout" class="hint-dialog">
+        <div class="hint-popout-box">
+            {% for guess, hint in guesses | zip(hints) %}
+            <div class="hint-tile">
+                <div class="hint-tile-title">{{ guess }}</div>
+                <div class="hint-tile-feedback-bubbles-container">
+                    {% set feedback_colors = guess_feedback.get(guess, []) %}
+                    {% for color in feedback_colors %}
+                    {% if color == 2 %}
+                    <div class="hint-tile-feedback-bubbles-pos"></div>
+                    {% elif color == 0 %}
+                    <div class="hint-tile-feedback-bubbles-neg"></div>
+                    {% elif color == 1 %}
+                    <div class="hint-tile-feedback-bubbles-med"></div>
+                    {% else %}
+                    <div class="hint-tile-feedback-bubbles-neg"></div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="hint-tile-hint">{{ hint }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </dialog>
+    <dialog id="helpDialog" class="helpdialog">
+      <div class="helpdialog-popout-box">
+        <p style="text-align: center; font-weight: bold">How to Play: Dysnomio!</p>
+        <p>
+          Dysnomio isn't your average word-guessing game — it's an exhilarating
+          linguistic journey designed to test your vocabulary while keeping the fun
+          alive and challenge! Here's how to play:
+        </p>
+        <ol>
+          <li>
+            <p>
+              <span style="font-weight: bold">Part of Speech:</span> Throw in nouns,
+              verbs, adjectives - you name it! All accepted parts of speech will be
+              considered.
+            </p>
+          </li>
+          <li>
+            <p>
+              <span style="font-weight: bold">Length:</span> How many letters are we
+              talking? The length of your word holds the key!
+            </p>
+          </li>
+          <li>
+            <p>
+              <span style="font-weight: bold">Complexity:</span> Ready to flex your
+              vocabulary muscles? Your word is rated from 1 to 5. Simple or SAT-level?
+              Maybe somewhere in between?
+            </p>
+          </li>
+          <li>
+            <p>
+              <span style="font-weight: bold">Similarity:</span> Close, but not quite!
+              How closely does the definition of your guess match the answer's? Get your 1 to 5 score to
+              find out!
+            </p>
+          </li>
+        </ol>
+        <p>Watch out for the colorful feedback boxes after each guess:</p>
+        <ul>
+          <li>Yellow means you're getting warmer.</li>
+          <li>Green means you're right on the money!</li>
+        </ul>
+        <p>Remember, each criterion has its twist:</p>
+        <ul>
+          <li>Part of Speech is green or nothing at all; no yellow here!</li>
+          <li>
+            If you hit within 2 letters of the answer's length, you'll see a yellow
+            light for Length.
+          </li>
+          <li>Complexity gets a yellow nod if you're within 2 points.</li>
+          <li>
+            Score a 4 on Similarity, and you'll see a hint of yellow. But hit a 5, and
+            it's green lights all the way!
+          </li>
+        </ul>
+        <p>Ready to learn? Let the guessing games begin!</p>
+      </div>
+    </dialog>
       <div class="container">
         <form action="/guess" method="post">
           <input
@@ -63,8 +145,7 @@
             </div>
           </div>
         </div>
-        <dialog id="helpDialog">
-          <!-- Add your help content here -->
+        <dialog id="helpDialog" class="helpdialog">
           <div>
             <p style="text-align: center; font-weight: bold">How to Play: Dysnomio!</p>
             <p>
@@ -121,14 +202,7 @@
             </ul>
             <p>Ready to learn? Let the guessing games begin!</p>
           </div>
-          
-          
-          <button onclick="document.getElementById('helpDialog').open = false" style="display: block; margin: 0 auto; width: 50px; height: 25px;">
-            Close
-          </button>
-          
         </dialog>
-
         <div class="lives-container">
           {% for _ in range(guess_count) %}
           <div class="good-lives"></div>
@@ -154,7 +228,8 @@
         <div class="date-footer"><span class="date">{{date}}</span> | {{ difficulty.capitalize() }}</div>
         <div class="footer-buttons">
           <form action="{{ url_for('restart')}}"> <button class="footer-button">Quit</button> </form>
-          <button onclick="document.getElementById('helpDialog').open = true" class="footer-button">Help</button>
+          <button onclick="toggleDialog('hint-popout')" class="footer-button">Guesses</button>
+          <button onclick="toggleDialog('helpDialog')" class="footer-button">Help</button>
       </footer>
     </div>
   </body>

@@ -216,7 +216,7 @@ footer {
 .footer-button {
   margin-right: 10px;
   margin-top: 10px;
-  width: 50px;
+  width: 75px;
   height: 25px;
 }
 
@@ -242,16 +242,115 @@ footer {
   color: red;
 }
 
-dialog {
-  border: solid black 1px;
+/* .helpdialog {
+  border: solid lightgrey 1px;
   border-radius: 10px;
   width: 700px;
   height: 500px;
   font-size: smaller;
   padding: 10px;
+} */
+
+.helpdialog-popout-box {
+  width: 350px;
+  height: 700px;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px;
+  position: relative;
+  border: solid 1px lightgrey;
 }
 
-.close-dialog-button {
-  display: block;
-  margin-top: 0 auto;
+.helpdialog {
+  border: 0px;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: auto;
+  right: 0;
+  bottom: 0;
+  font-size: smaller;
+}
+.hint-popout-box {
+  width: 350px;
+  height: 700px;
+  border-radius: 10px;
+  margin: 20px;
+  position: relative;
+  border: solid 1px lightgrey;
+  padding: 10px;
+}
+
+.hint-tile {
+  display: inline-block;
+  height: 140px;
+  width: 360px;
+  border: black solid 1px;
+  border-radius: 3px;
+  padding: 0;
+  margin: 5px;
+  margin-left: 10px;
+  background-color: white;
+  border: solid 1px lightgrey;
+}
+
+.hint-tile-title {
+  text-align: center;
+  padding: 0;
+  margin: 10px;
+}
+
+.hint-tile-feedback-bubbles-container {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.hint-tile-feedback-bubbles-pos {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 25%;
+  margin: 2px;
+  background-color: rgba(156, 216, 126, 0.315);
+}
+
+.hint-tile-feedback-bubbles-med {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 25%;
+  margin: 2px;
+  background-color: rgba(216, 213, 123, 0.315);
+}
+
+.hint-tile-feedback-bubbles-neg {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 25%;
+  margin: 2px;
+  background-color: rgba(204, 204, 204, 0.315);
+}
+
+.hint-tile-hint {
+  padding: 0;
+  margin: 15px;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  font-size: small;
+  font-weight: lighter;
+}
+
+.hint-dialog {
+  border: 0px;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
 }
