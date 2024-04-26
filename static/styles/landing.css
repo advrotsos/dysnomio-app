@@ -8,13 +8,13 @@ body {
 
 .landing-page-container {
   /* border: solid 2px red; */
-  width: 700px;
+  width: 600px;
   height: 500px;
   position: absolute;
   left: 50%;
   right: 50%;
-  margin-left: -350px;
-  margin-right: -350px;
+  margin-left: -300px;
+  margin-right: -300px;
   margin-top: 120px;
 }
 
@@ -45,12 +45,12 @@ body {
 }
 
 .landing-page-button-grid {
-  width: 700px;
+  width: 600px;
   height: 120px;
   display: grid;
-  grid-template-columns: 185px 185px 185px;
+  grid-template-columns: 160px 160px 160px;
   grid-row: auto auto auto;
-  grid-column-gap: 56px;
+  grid-column-gap: 46px;
   /* border: 1px solid purple; */
   margin-top: 100px;
   /* place-items: center; */
@@ -75,7 +75,7 @@ body {
 .landing-page-button {
   border: 2px solid #d9d9d9;
   border-radius: 20px;
-  width: 215px;
+  width: 190px;
   height: 50px;
   align-items: center;
   justify-content: center;
@@ -85,7 +85,7 @@ body {
   border: 2px solid #d9d9d9;
   background-color: white;
   border-radius: 20px;
-  width: 215px;
+  width: 190px;
   height: 50px;
   text-align: center; /* Centers the text */
   font-size: 20px;
