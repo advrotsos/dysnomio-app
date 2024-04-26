@@ -3,33 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dysnomio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.6" />
+    <title>Dysnomio - Redesign</title>
+    <script src="script.js"></script>
+
     <link
       rel="stylesheet"
       type="text/css"
       href="{{ url_for('static', filename='styles/landing.css') }}"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="welcome-to">Welcome to...</div>
-    <div class="landing-square">
-      <div class="title">
-        <h1 class="title-header">Dysnomio (n.)</h1>
-        <div class="title-subheader">[ dĭs-nō′mē-oh ]</div>
+    <div class="landing-page-container">
+      <div class="landing-page-main-title">
+        <span class="title-gradient">Dysnomio!</span>
       </div>
-      <div class="content-buttons">
-        <form method="post" name="difficulty-select" action="/select">
-          <select name="difficulty">
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-            <option value="extreme">Extreme</option>
-          </select>
-          <button type="submit" class="start-button">Start</button>
-        </form>
+      <div class="landing-page-button-grid">
+        <div class="landing-page-button">
+          <span class="button-text">Help?</span>
+        </div>
+        <div class="landing-page-button">
+          <form method="post" action="/select">
+            <select class="landing-page-button-select" name="difficulty" style="border: 0;">
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+              <option value="extreme">Extreme</option>
+            </select>
+          </div>
+            <button
+              class="landing-page-button"
+              style="background-color: rgba(0, 0, 0, 0.7)"
+              type="submit"
+              value="Hard"
+            >
+            <span class="button-text" style="color: #d9d9d9; font-weight: bold; margin-top: 2px; letter-spacing: 1px;"
+            >Play!</span
+          >
+            </button>
+          </form>
+        </div>
+        <div class="date-footer-container">{{ date }}</div>
       </div>
+
     </div>
-    <div class="date">{{ date }}</div>
   </body>
 </html>

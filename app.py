@@ -7,6 +7,7 @@ from src.exceptions import InvalidGuess, RepeatGuess
 app = Flask(__name__)
 
 import jinja2
+
 app.jinja_env.filters["zip"] = zip  # add zip()
 env = jinja2.Environment()
 env.globals.update(zip=zip)
@@ -14,7 +15,7 @@ app.secret_key = "KEY123ABCMUADDIB"
 
 todaydate = date.today().strftime("%A, %B %-d %Y")
 difficulty: str = "Hard"  # placeholder in case something fails
-lives: int = 5
+lives: int = 4
 
 
 @app.route("/")
@@ -63,7 +64,7 @@ def restart():
 @app.route("/guess", methods=["POST", "GET"])
 def process_guess():
     if "lives_remaining" not in session:
-        session["lives_remaining"] = 5
+        session["lives_remaining"] = 4
     if "guess_count" not in session:
         session["guess_count"] = 0
     print(session["game_state"]["difficulty"], session["game_state"]["answer"])
@@ -205,10 +206,10 @@ def process_guess():
                 difficulty=session["game_state"]["difficulty"],
             )
 
-        if int(session["guess_count"]) < 5:
+        if int(session["guess_count"]) < 4:
             session["guess_count"] += 1
         else:
-            session["guess_count"] = 5
+            session["guess_count"] = 4
         session["lives_remaining"] -= 1
         if int(session["lives_remaining"]) < 0:  # lose on the sixth guess
             return render_template(
