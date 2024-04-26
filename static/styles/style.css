@@ -1,356 +1,371 @@
 html,
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
-p {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  margin-bottom: 0px;
-}
-
-.title-header {
-  text-align: center;
-  padding-top: 0.75rem;
-  margin-bottom: 10px;
-  font-weight: normal;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  color: rgb(66, 64, 64);
-}
-
-.title-subheader {
-  text-align: center;
-  padding-top: 0;
-  color: rgb(66, 64, 64);
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 350px;
-  padding-top: 25px;
-}
-
-/* .outer-container {
-  border: solid lightgrey 1px;
+.main-outer-container {
+  width: 500px;
+  height: 750px;
+  border: solid #d9d9d9 2px;
   border-radius: 15px;
-  padding: 20px;
-  margin-bottom: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  margin-left: -250px;
+  margin-right: -250px;
   margin-top: 20px;
-} */
-
-.box-container {
-  padding-top: 25px;
-  display: flex;
 }
 
-.feedback-box-neg {
-  width: 150px;
-  height: 150px;
-  background-color: rgba(204, 204, 204, 0.315);
-  margin: 10px;
-  border-radius: 10px;
+.blur {
+  /* -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px); */
+}
+
+.action-button-pill {
+  border: 2px solid #d9d9d9;
+  /* border: 2px solid rgba(0, 0, 0, 0.7); */
+  border-radius: 15px;
+  height: 35px;
+  width: 65px;
+  position: absolute;
+  margin: 32px;
+}
+
+.action-button-pill-2 {
+  border: 2px solid #d9d9d9;
+  /* border: 2px solid rgba(0, 0, 0, 0.7); */
+  border-radius: 15px;
+  height: 35px;
+  width: 65px;
+  position: absolute;
+  right: 0;
+  margin: 32px;
+}
+
+.action-button-pill:hover {
+  background-color: darkgray;
+  cursor: pointer;
+}
+.action-button-pill-2:hover {
+  background-color: darkgray;
+  cursor: pointer;
+}
+.action-button-pill-2:active {
+  background-color: lightgray;
+}
+.action-button-pill:active {
+  background-color: lightgray;
+}
+
+.guess-popout-guess-counter {
+  font-family: "Rubik";
+  font-weight: bold;
+  font-style: italic;
+  font-size: 20px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  border: solid lightgrey 1px;
-}
-
-.feedback-box-pos {
-  width: 150px;
-  height: 150px;
-  background-color: rgba(156, 216, 126, 0.315);
-  margin: 10px;
-  border-radius: 10px;
-  display: flex;
   justify-content: center;
-  align-items: center;
-  border: solid lightgrey 1px;
+  margin: 5px;
+  color: rgba(0, 0, 0, 0.7);
 }
 
-.feedback-box-med {
-  width: 150px;
-  height: 150px;
-  background-color: rgba(216, 213, 123, 0.315);
-  margin: 10px;
-  border-radius: 10px;
+.guess-popout-guess-counter:hover {
+  font-style: normal;
+}
+
+.triangle-left {
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;
+  border-right: 100px solid red;
+  border-bottom: 50px solid transparent;
+}
+
+.main-title {
   display: flex;
-  justify-content: center;
   align-items: center;
-  border: solid lightgrey 1px;
+  justify-content: center;
+  font-family: "Rubik";
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 2.25rem;
+  font-weight: bolder;
+  font-style: italic;
+  padding: 30px;
+  letter-spacing: 1px;
 }
 
-.guess-input {
-  width: 200px;
-  height: 50px;
+.title-gradient {
+  background-image: linear-gradient(
+    to right,
+    white,
+    rgba(216, 213, 123, 0.5),
+    rgba(156, 216, 126, 0.5)
+  );
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 3px;
+}
+
+.guess-input-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: calc(50% - (90px + 350px) / 2); /* Calculate the position from the top */
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+input {
+  padding: 15px;
   border-radius: 10px;
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
-  padding: 10px;
-  box-sizing: border-box;
+  border-style: solid;
+  /* border: 2px solid rgba(0, 0, 0, 0.5); */
+  border: 2px solid #d9d9d9;
+  font-family: "Josefin Sans";
+  font-size: 16px;
+  /* text-align: center; */
 }
 
 ::placeholder {
   text-align: center;
 }
 
-/* .hint {
-  padding-top: 35px;
-  padding-bottom: 0px;
-  width: 500px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  text-align: center;
-  margin: 0 auto;
-  margin-top: auto;
-  font-weight: lighter;
-} */
+.feedback-tile-outer-container {
+  width: 300px;
+  height: 300px;
+  /* border: solid red 2px; */
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  margin-left: -150px;
+  margin-top: 120px;
 
-.hint {
-  padding-top: 10px;
-  padding-bottom: 0px;
-  width: 650px;
+  display: grid;
+  grid-template-columns: 145px 145px;
+  grid-row: auto auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.guess-popout-inner-grid-container {
+  height: inherit;
+  display: inline-grid;
+  grid-template-columns: 325px;
+  grid-template-rows: 125px repeat(auto-fill, 156px);
+  grid-row: 10px;
+  grid-row-gap: 0px;
+}
+
+.guess-popout-grid-container-box {
+  border-top: 2px solid #d9d9d9;
+  /* border-radius:  */
+}
+
+.guess-popout-main-title {
+  font-family: "Rubik";
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 1.5rem;
+  font-weight: bolder;
+  font-style: italic;
+  letter-spacing: 1px;
+  padding-left: 15px;
+  padding-top: 5px;
+  /* border: 2px solid blue; */
+  justify-content: left;
+  display: inline;
+}
+.guess-popout-exit-button {
+  font-family: "Rubik";
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 1.5rem;
+  font-weight: bolder;
+  font-style: italic;
+  letter-spacing: 1px;
+  padding-left: 15px;
+  padding-top: 5px;
+  /* border: 2px solid red; */
+  justify-content: right;
+  display: inline-block;
+  margin-left: 135px;
+}
+
+.guess-popout-exit-button:hover {
+  /* color: red; */
+  color: darkgrey;
+  font-style: normal;
+  cursor: pointer;
+}
+
+.guess-popout-guess-text-title {
+  /* border: 2px solid red; */
+  font-family: "Josefin Sans";
+  font-size: normal;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.7);
+  padding: 5px;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.guess-popout-guess-text-body {
+  font-family: "Josefin Sans";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin-top: 50px; /* ! This is silly... need to make this auto fit?? */
+  font-size: small;
+  padding: 5px;
+  margin-left: 5px;
+  overflow-x: hidden;
+  color: rgba(0, 0, 0, 0.7);
+  /* border: 1px solid red; */
+}
+
+.feedback-box {
+  border: 2px solid #d9d9d9;
+  border-radius: 10px;
+  display: flex;
   align-items: center;
   justify-content: center;
+  /* background-color: #d9d9d9; */
+}
+
+.feedback-box-label {
+  /* font-family: "Rubik"; */
+  font-family: "Josefin Sans";
+  color: rgba(128, 128, 128, 0.6);
+  /* font-style: italic; */
+  font-size: small;
+  margin-top: auto;
+  margin-bottom: 3px;
+}
+
+.feedback-box-main-text {
+  font-family: "Rubik";
+  color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  font-size: 26px;
+  /* font-weight: lighters; */
+  animation: fadeIn 2s forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.feedback-box-response {
   display: flex;
-  text-align: center;
-  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin-right: 100px;
+}
+
+.hint-outer-container {
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 150px;
+  width: 90%;
+  padding: 0;
   margin-left: auto;
   margin-right: auto;
-  font-weight: lighter;
-  max-height: 200px;
-  overflow-y: auto;
-  margin-top: 10px;
+  margin-top: 470px;
+}
+
+.hint-text {
+  font-family: "Josefin Sans";
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0;
+  margin: auto;
+  font-size: large;
+  overflow-y: hidden;
+  letter-spacing: normal;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.guess-popout-outer-container {
+  width: 325px;
+  height: 750px;
+  border: solid #d9d9d9 2px;
+  /* border: solid 2px red; */
+  border-radius: 15px;
+  position: absolute;
+  /* left: 66.667%; */
+
+  left: 85%;
+  right: 50%;
+  margin-left: -250px;
+  margin-right: -250px;
+  margin-top: 20px;
+  display: none;
+  background-color: white;
+}
+
+.feedback-box-small {
+  border: 2px solid #d9d9d9;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guess-popout-feedback-box-grid {
+  width: 40px;
+  height: 40px;
+  /* border: solid red 2px; */
+  position: absolute;
+  display: grid;
+  grid-template-columns: 20px 20px;
+  grid-row: auto auto;
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+  /* right: 100%; */
+
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  margin-left: -21px; /*  NOTE: Make sure this is working! Should be centered*/
+  /* margin-top: 120px; */
+}
+
+.hidden {
+  display: none;
 }
 
 .lives-container {
-  padding-top: 10px;
-  display: flex;
-}
-
-.lives {
-  width: 8px;
-  height: 8px;
-  background-color: #ccc;
-  border-radius: 50%; /* Makes it a circle */
-  margin: 2px;
-  /* border: solid lightgrey 1px; */
-}
-
-.good-lives {
-  width: 8px;
-  height: 8px;
-  background-color: rgba(212, 85, 69, 0.315);
-  border-radius: 50%; /* Makes it a circle */
-  margin: 2px;
-  /* border: solid lightgrey 1px; */
-}
-
-.pos-feedback {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  font-weight: lighter;
-  font-size: large;
-}
-
-.len-feedback {
-  text-align: center;
-  font-weight: lighter;
-  font-size: small;
-  font-size: large;
-}
-
-.complex-feedback {
-  text-align: center;
-  font-weight: lighter;
-  font-size: large;
-}
-
-.sim-feedback {
-  text-align: center;
-  font-weight: lighter;
-  font-size: large;
-}
-
-.feedback-title {
-  text-align: center;
-  margin-bottom: 2px; /* Adjust as needed */
-  font-weight: lighter; /* Make the title bold */
-  font-size: smaller;
-}
-
-footer {
-  /* background-color: #333; */
-  /* background-color: rgba(204, 204, 204, 0.315); */
-  /* color: #fff; */
-  color: rgb(66, 64, 64);
-  text-align: center;
-  justify-content: center;
-  padding: 0;
-  position: fixed;
-  width: 100%;
-  bottom: 20px;
-  font-weight: lighter;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-.footer-buttons {
-  display: flex;
-  justify-content: center;
-}
-
-.footer-button {
-  margin-right: 10px;
-  margin-top: 10px;
-  width: 75px;
+  /* border: 2px solid red; */
+  width: 150px;
   height: 25px;
-}
-
-/* 
-.date-footer {
-  text-align: center;
-  font-weight: bold;
-  margin: 0px;
-} */
-
-.error {
-  padding-top: 10px;
-  padding-bottom: 0px;
-  width: 500px;
-  align-items: center;
-  justify-content: center;
   display: flex;
-  text-align: center;
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  font-weight: lighter;
-  color: red;
+  position: absolute;
+  top: 75%; /* Calculate the position from the top */
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-/* .helpdialog {
-  border: solid lightgrey 1px;
-  border-radius: 10px;
-  width: 700px;
-  height: 500px;
-  font-size: smaller;
-  padding: 10px;
-} */
-
-.helpdialog-popout-box {
-  width: 350px;
-  height: 700px;
-  border-radius: 10px;
-  margin: 20px;
-  padding: 10px;
-  position: relative;
-  border: solid 1px lightgrey;
-}
-
-.helpdialog {
-  border: 0px;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  top: 0;
-  left: auto;
-  right: 0;
-  bottom: 0;
-  font-size: smaller;
-}
-.hint-popout-box {
-  width: 350px;
-  height: 700px;
-  border-radius: 10px;
-  margin: 20px;
-  position: relative;
-  border: solid 1px lightgrey;
-  padding: 10px;
-}
-
-.hint-tile {
-  display: inline-block;
-  height: 140px;
-  width: 360px;
-  border: black solid 1px;
-  border-radius: 3px;
-  padding: 0;
-  margin: 5px;
-  margin-left: 10px;
-  background-color: white;
-  border: solid 1px lightgrey;
-}
-
-.hint-tile-title {
-  text-align: center;
-  padding: 0;
-  margin: 10px;
-}
-
-.hint-tile-feedback-bubbles-container {
-  display: flex;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-}
-
-.hint-tile-feedback-bubbles-pos {
-  width: 10px;
-  height: 10px;
-  background-color: #ccc;
-  border-radius: 25%;
-  margin: 2px;
-  background-color: rgba(156, 216, 126, 0.315);
-}
-
-.hint-tile-feedback-bubbles-med {
-  width: 10px;
-  height: 10px;
-  background-color: #ccc;
-  border-radius: 25%;
-  margin: 2px;
-  background-color: rgba(216, 213, 123, 0.315);
-}
-
-.hint-tile-feedback-bubbles-neg {
-  width: 10px;
-  height: 10px;
-  background-color: #ccc;
-  border-radius: 25%;
-  margin: 2px;
-  background-color: rgba(204, 204, 204, 0.315);
-}
-
-.hint-tile-hint {
-  padding: 0;
-  margin: 15px;
-  margin-top: 20px;
-  justify-content: center;
-  align-items: center;
-  font-size: small;
-  font-weight: lighter;
-}
-
-.hint-dialog {
-  border: 0px;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
+.lives-bubble {
+  width: 18px;
+  height: 15px;
+  margin: auto;
+  border-radius: 50px;
+  border: 2px solid #d9d9d9;
 }

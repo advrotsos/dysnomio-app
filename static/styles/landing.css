@@ -1,122 +1,126 @@
 html,
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
-p {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+.landing-page-container {
+  /* border: solid 2px red; */
+  width: 700px;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  margin-left: -350px;
+  margin-right: -350px;
+  margin-top: 120px;
 }
 
-.landing-square {
-  width: 450px;
-  height: 450px;
-  margin: 10px auto; /* Adjust margin to center horizontally */
-  border-radius: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  border: solid lightgrey 1px;
-  margin-top: 0px;
-}
-
-.title {
-  text-align: center;
-  color: rgb(66, 64, 64);
-}
-
-.title-header {
-  margin-top: 125px; /* Adjust as needed */
-  /* font-family: "Times New Roman", Times, serif; */
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  font-weight: lighter;
-  margin-bottom: 10px;
-}
-/* 
-.title-subheader {
-  margin-top: 0px;
-} */
-
-.content-buttons {
+.landing-page-main-title {
+  /* border: 1px dashed blue; */
   display: flex;
   align-items: center;
-  margin-bottom: 66px;
-  margin-top: 66px;
-}
-.content-buttons select {
-  margin-right: 50px;
-}
-
-/* Additional styling for the select and button */
-select {
-  padding: 10px;
-  margin-right: 100px;
-  width: 150px;
+  justify-content: center;
+  font-size: 4rem;
+  font-family: "Rubik";
+  font-weight: bolder;
+  font-style: italic;
+  letter-spacing: 1px;
+  padding: 30px;
+  color: rgba(0, 0, 0, 0.7);
 }
 
-.start-button {
-  padding: 10px 20px;
-  background-color: rgba(50, 145, 3, 0.315);
-  color: white;
-  border: none;
-  border-radius: 5px;
+.title-gradient {
+  background-image: linear-gradient(
+    to right,
+    white,
+    rgba(216, 213, 123, 0.5),
+    rgba(156, 216, 126, 0.5)
+  );
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 3px;
+}
+
+.landing-page-button-grid {
+  width: 700px;
+  height: 120px;
+  display: grid;
+  grid-template-columns: 185px 185px 185px;
+  grid-row: auto auto auto;
+  grid-column-gap: 56px;
+  /* border: 1px solid purple; */
+  margin-top: 100px;
+  /* place-items: center; */
+  align-items: center;
+  /* padding: 10px; */
+}
+
+.date-footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0px;
+  font-family: "Josefin Sans";
+  font-weight: normal;
+  font-size: 19px;
+  /* text-decoration: overline; */
+  border-top: 2px solid #d9d9d9;
+  padding: 20px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.landing-page-button {
+  border: 2px solid #d9d9d9;
+  border-radius: 20px;
+  width: 215px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-page-button-select {
+  border: 2px solid #d9d9d9;
+  background-color: white;
+  border-radius: 20px;
+  width: 215px;
+  height: 50px;
+  text-align: center; /* Centers the text */
+  font-size: 20px;
+  font-family: "Josefin Sans";
+  color: rgba(0, 0, 0, 0.7);
+  appearance: none;
+}
+
+/* Apply hover effect to change text style to italics */
+.landing-page-button-select:hover {
+  background-color: #d9d9d971;
   cursor: pointer;
-  width: 150px;
-}
-.start-button:hover {
-  background-color: rgba(55, 128, 18, 0.596);
+  font-style: italic;
 }
 
-.start-button:active {
-  box-shadow: inset 5px 5px 10px -5px rgba(0, 0, 0, 0.5);
+.landing-page-button:hover {
+  background-color: #d9d9d971;
+  cursor: pointer;
+  font-style: italic;
 }
 
-.date {
-  text-align: center;
-  margin-top: 20px;
-  font-weight: lighter;
+.landing-page-button:active {
+  background-color: darkgray;
 }
 
-.welcome-to {
-  text-align: center;
-  font-weight: lighter;
-  padding-bottom: 0;
-  padding-top: 0;
-  margin-bottom: 20px;
-  margin-top: 50px;
-}
-
-footer {
-  /* background-color: #333; */
-  /* background-color: rgba(204, 204, 204, 0.315); */
-  /* color: #fff; */
-  color: rgb(66, 64, 64);
-  text-align: center;
-  justify-content: center;
-  padding: 0;
-  position: fixed;
-  width: 100%;
-  bottom: 20px;
-  font-weight: lighter;
-}
-
-.hint {
-  padding-top: 10px;
-  padding-bottom: 0px;
-  width: 500px;
+.button-text {
+  font-family: "Josefin Sans";
+  color: rgba(0, 0, 0, 0.7);
+  /* font-family: "Rubik";
+  font-weight: bold;
+  font-style: italic; */
+  display: flex;
   align-items: center;
   justify-content: center;
-  display: flex;
-  text-align: center;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  font-weight: lighter;
+  margin-top: 14px;
+  font-size: 20px;
+  /* letter-spacing: 1px; */
 }

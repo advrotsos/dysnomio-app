@@ -31,7 +31,7 @@ hint_model_user_roles = {
             Provide a hint that helps the player correctly name the answer: {answer}. \
                 Provde the response in the format: 'Hint: ...'. \
                     EXTREMELY IMPORTANT: NEVER use the word {answer} anywhere in your response. \
-                        EXTREMELY IMPORTANT: Ensure the hint helps the user guess {answer}, not {guess}. ",
+                        EXTREMELY IMPORTANT: Ensure the hint helps the user guess {answer}, not {guess}. Limit the response to 250 characters. \ ",
 }
 
 
@@ -44,5 +44,6 @@ initial_hint_model_system_roles = {
 initial_hint_model_user_roles = {
     "v1": "The task is {prompt}. The response to the task should act as a hint for someone trying to guess the word {answer}. \
         Listen to the task -- if it says write a sonnent, response with a written sonnet. \
-            EXTREMELY IMPORTANT: NEVER provide the answer {answer} at any place in your response."
+            EXTREMELY IMPORTANT: NEVER provide the answer {answer} at any place in your response. \
+                The response must be less than 250 characters. This is very important."
 }

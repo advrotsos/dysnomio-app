@@ -3,234 +3,170 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.8" />
+    <title>Dysnomio - Redesign</title>
+    <script src="script.js"></script>
     <link
       rel="stylesheet"
       type="text/css"
       href="{{ url_for('static', filename='styles/style.css') }}"
     />
-    <title>Dysnomio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-<script src="{{ url_for('static', filename='/script.js') }}"></script>
   <body>
-    <div class="outer-container">
-      <h1 class="title-header">Dysnomio (n.)</h1>
-      <div class="title-subheader">[ dĭs-nō′mē-oh ]</div>
-      <dialog id="hint-popout" class="hint-dialog">
-        <div class="hint-popout-box">
-            {% for guess, hint in guesses | zip(hints) %}
-            <div class="hint-tile">
-                <div class="hint-tile-title">{{ guess }}</div>
-                <div class="hint-tile-feedback-bubbles-container">
-                    {% set feedback_colors = guess_feedback.get(guess, []) %}
-                    {% for color in feedback_colors %}
-                    {% if color == 2 %}
-                    <div class="hint-tile-feedback-bubbles-pos"></div>
-                    {% elif color == 0 %}
-                    <div class="hint-tile-feedback-bubbles-neg"></div>
-                    {% elif color == 1 %}
-                    <div class="hint-tile-feedback-bubbles-med"></div>
-                    {% else %}
-                    <div class="hint-tile-feedback-bubbles-neg"></div>
-                    {% endif %}
-                    {% endfor %}
-                </div>
-                <div class="hint-tile-hint">{{ hint }}</div>
-            </div>
-            {% endfor %}
-        </div>
-    </dialog>
-    <dialog id="helpDialog" class="helpdialog">
-      <div class="helpdialog-popout-box">
-        <p style="text-align: center; font-weight: bold">How to Play: Dysnomio!</p>
-        <p>
-          Dysnomio isn't your average word-guessing game — it's an exhilarating
-          linguistic journey designed to test your vocabulary while keeping the fun
-          alive and challenge! Here's how to play:
-        </p>
-        <ol>
-          <li>
-            <p>
-              <span style="font-weight: bold">Part of Speech:</span> Throw in nouns,
-              verbs, adjectives - you name it! All accepted parts of speech will be
-              considered.
-            </p>
-          </li>
-          <li>
-            <p>
-              <span style="font-weight: bold">Length:</span> How many letters are we
-              talking? The length of your word holds the key!
-            </p>
-          </li>
-          <li>
-            <p>
-              <span style="font-weight: bold">Complexity:</span> Ready to flex your
-              vocabulary muscles? Your word is rated from 1 to 5. Simple or SAT-level?
-              Maybe somewhere in between?
-            </p>
-          </li>
-          <li>
-            <p>
-              <span style="font-weight: bold">Similarity:</span> Close, but not quite!
-              How closely does the definition of your guess match the answer's? Get your 1 to 5 score to
-              find out!
-            </p>
-          </li>
-        </ol>
-        <p>Watch out for the colorful feedback boxes after each guess:</p>
-        <ul>
-          <li>Yellow means you're getting warmer.</li>
-          <li>Green means you're right on the money!</li>
-        </ul>
-        <p>Remember, each criterion has its twist:</p>
-        <ul>
-          <li>Part of Speech is green or nothing at all; no yellow here!</li>
-          <li>
-            If you hit within 2 letters of the answer's length, you'll see a yellow
-            light for Length.
-          </li>
-          <li>Complexity gets a yellow nod if you're within 2 points.</li>
-          <li>
-            Score a 4 on Similarity, and you'll see a hint of yellow. But hit a 5, and
-            it's green lights all the way!
-          </li>
-        </ul>
-        <p>Ready to learn? Let the guessing games begin!</p>
+    <div class="main-outer-container" id="mainContainer">
+      <div class="action-button-pill">
+        <div class="guess-popout-guess-counter">X</div>
       </div>
-    </dialog>
-      <div class="container">
+      <div
+        class="action-button-pill-2"
+        onclick="
+        if (getElementById('toggleDiv').style.display == 'flex') {
+          getElementById('toggleDiv').style.display = 'none'
+        } else {
+          getElementById('toggleDiv').style.display =  'flex'
+        }
+        
+        // this isn't working :/ 
+        getElementById('mainContainer').classList.add('blur')
+        "
+      >
+        <!-- <div class="triangle-left"></div> -->
+        <div class="guess-popout-guess-counter">{{ guess_count }}</div>
+      </div>
+      <div class="main-title">
+        <span class="title-gradient">Dysnomio!</span>
+      </div>
+
+      <div class="guess-input-form">
         <form action="/guess" method="post">
-          <input
-            type="text"
-            placeholder="What is your guess?"
-            class="guess-input"
-            name="guess"
-          />
+          <input type="text" placeholder="What is your guess?" name="guess" />
         </form>
-        <div class="box-container">
-          <div class="feedback-container">
-            <div class="feedback-title">Part of Speech</div>
-            <div
-              class="{% if answer_part_of_speech in guess_part_of_speech %}feedback-box-pos{% else %}feedback-box-neg{% endif %}"
-            >
-              <p class="pos-feedback">{{guess_part_of_speech}}</p>
-            </div>
+      </div>
+      <div class="feedback-tile-outer-container">
+        <div
+          class="feedback-box"
+          style="{% if answer_part_of_speech in guess_part_of_speech %}background-color: rgba(156, 216, 126, 0.5); {% else %}background-color: white;{% endif %}"
+        >
+          <div
+            class="feedback-box-main-text"
+            style="font-size: 20px;"
+          >
+            {{guess_part_of_speech}}
           </div>
-
-          <div class="feedback-container">
-            <div class="feedback-title">Length</div>
-            <!-- <div class="feedback-box-neg"> -->
-            <div
-              class="{% if lendiff == 0 %} feedback-box-pos {% elif lendiff in [1, 2] %} feedback-box-med {% else %} feedback-box-neg {% endif %}"
-            >
-              <p class="len-feedback">{{guess_word_len}}</p>
-            </div>
-          </div>
-
-          <div class="feedback-container">
-            <div class="feedback-title">Complexity</div>
-            <div
-              class="{% if compdiff == 0 %} feedback-box-pos {% elif compdiff in [1, 2] %} feedback-box-med {% else %} feedback-box-neg {% endif %}"
-            >
-              <p class="complex-feedback">{{guess_complexity}}</p>
-            </div>
-          </div>
-
-          <div class="feedback-container">
-            <div class="feedback-title">Similarity</div>
-            <div
-              class="{% if guess_sim_num == 4 %}feedback-box-med {% elif guess_sim_num == 5 %}feedback-box-pos {% else %}feedback-box-neg{% endif %}"
-            >
-              <p class="sim-feedback">{{guess_sim}}</p>
-            </div>
-          </div>
+          <div class="feedback-box-label">Part of Speech</div>
         </div>
-        <dialog id="helpDialog" class="helpdialog">
-          <div>
-            <p style="text-align: center; font-weight: bold">How to Play: Dysnomio!</p>
-            <p>
-              Dysnomio isn't your average word-guessing game — it's an exhilarating
-              linguistic journey designed to test your vocabulary while keeping the fun
-              alive and challenge! Here's how to play:
-            </p>
-            <ol>
-              <li>
-                <p>
-                  <span style="font-weight: bold">Part of Speech:</span> Throw in nouns,
-                  verbs, adjectives - you name it! All accepted parts of speech will be
-                  considered.
-                </p>
-              </li>
-              <li>
-                <p>
-                  <span style="font-weight: bold">Length:</span> How many letters are we
-                  talking? The length of your word holds the key!
-                </p>
-              </li>
-              <li>
-                <p>
-                  <span style="font-weight: bold">Complexity:</span> Ready to flex your
-                  vocabulary muscles? Your word is rated from 1 to 5. Simple or SAT-level?
-                  Maybe somewhere in between?
-                </p>
-              </li>
-              <li>
-                <p>
-                  <span style="font-weight: bold">Similarity:</span> Close, but not quite!
-                  How closely does the definition of your guess match the answer's? Get your 1 to 5 score to
-                  find out!
-                </p>
-              </li>
-            </ol>
-            <p>Watch out for the colorful feedback boxes after each guess:</p>
-            <ul>
-              <li>Yellow means you're getting warmer.</li>
-              <li>Green means you're right on the money!</li>
-            </ul>
-            <p>Remember, each criterion has its twist:</p>
-            <ul>
-              <li>Part of Speech is green or nothing at all; no yellow here!</li>
-              <li>
-                If you hit within 2 letters of the answer's length, you'll see a yellow
-                light for Length.
-              </li>
-              <li>Complexity gets a yellow nod if you're within 2 points.</li>
-              <li>
-                Score a 4 on Similarity, and you'll see a hint of yellow. But hit a 5, and
-                it's green lights all the way!
-              </li>
-            </ul>
-            <p>Ready to learn? Let the guessing games begin!</p>
+        <div
+          class="feedback-box"
+          style="{% if lendiff == 0 %}background-color: rgba(156, 216, 126, 0.5); {% elif lendiff in [1, 2] %} background-color: rgba(216, 213, 123, 0.5); {% else %} background-color: white; {% endif %}"
+        >
+          <div class="feedback-box-main-text" style="animation-delay: 400ms">
+            {{guess_word_len}}
           </div>
-        </dialog>
-        <div class="lives-container">
-          {% for _ in range(guess_count) %}
-          <div class="good-lives"></div>
-          {% endfor %} {% for _ in range(lives) %}
-          <div class="lives"></div>
-          {% endfor %}
+          <div class="feedback-box-label">Length</div>
+        </div>
+        <div class="feedback-box"
+        style="{% if compdiff == 0 %} background-color: rgba(156, 216, 126, 0.5); {% elif compdiff in [1, 2] %} background-color: rgba(216, 213, 123, 0.5); {% else %} background-color: white; {% endif %}">
+          <div
+            class="feedback-box-main-text"
+            style="animation-delay: 800ms;"
+          >
+            {{guess_complexity}}
+          </div>
+          <div class="feedback-box-label">Complexity</div>
+        </div>
+        <div
+          class="feedback-box"
+          style="{% if guess_sim_num == 4 %}background-color: rgba(216, 213, 123, 0.5); {% elif guess_sim_num == 5 %}background-color: rgba(156, 216, 126, 0.5); {% else %}background-color: white;{% endif %}"
+        >
+          <div class="feedback-box-main-text" style="animation-delay: 1200ms">
+            {{guess_sim}}
+          </div>
+          <div class="feedback-box-label">Similarity</div>
         </div>
       </div>
-      <div class="hint">
-        {% if guess_count == 0 %} {{init_hint}} {% else %} {{guess_hint}} {%
-        endif %} 
+      <div class="lives-container">
+        {% for _ in range(guess_count) %}
+        <div class="lives-bubble" style="background-color: rgba(255, 0, 0, 0.349);"></div>
+        {% endfor %}{% for _ in range(lives) %}
+        <div class="lives-bubble" "></div>
+        {% endfor %}
       </div>
-      {% if invalid_guess %}
-      <div class="error-box">  
-        <p class="error">Word Not Found. Please Try Again.</p>
-        {% elif repeat_guess %}
-            <p class="error">You already used that guess. Try something new. </p>
-        {% endif %}
-      </div>
+      <div class="hint-outer-container">
+        <div class="hint-text"">
+          {% if guess_count == 0 %} {{init_hint}} {% else %} {{guess_hint}} {%
+          endif %}
+        </div>
       </div>
     </div>
-      <footer>
-        <div class="date-footer"><span class="date">{{date}}</span> | {{ difficulty.capitalize() }}</div>
-        <div class="footer-buttons">
-          <form action="{{ url_for('restart')}}"> <button class="footer-button">Quit</button> </form>
-          <button onclick="toggleDialog('hint-popout')" class="footer-button">Guesses</button>
-          <button onclick="toggleDialog('helpDialog')" class="footer-button">Help</button>
-      </footer>
+    <div class="guess-popout-outer-container" id="toggleDiv">
+      <div class="guess-popout-inner-grid-container">
+        <div class="guess-popout-grid-container-box"  style="border-bottom: 0px solid #d9d9d9; border-top: 0;">
+          <div class="guess-popout-main-title">Guesses.</div>
+          <div
+            class="guess-popout-exit-button"
+            onclick="
+          
+          getElementById('toggleDiv').style.display = 'none'
+
+          "
+          >
+            X
+          </div>
+
+          <div class="guess-popout-guess-text-body" style="margin: 5px; overflow-y: hidden;">
+            {{ init_hint }}
+          </div>
+          
+        </div>
+        {% for guess, hint in guesses | zip(hints) %}
+        <div class="guess-popout-grid-container-box">
+          <div class="guess-popout-guess-text-title">{{ guess }}</div>
+          <div class="guess-popout-feedback-box-grid">
+            {% set feedback_colors = guess_feedback.get(guess, []) %} {% for
+            color in feedback_colors %} {% if color == 2 %}
+            <div
+              class="feedback-box-small"
+              style="background-color: rgba(156, 216, 126, 0.5)"
+            ></div>
+            {% elif color == 0 %}
+            <div
+              class="feedback-box-small"
+              style="background-color: white"
+            ></div>
+            {% elif color == 1 %}
+            <div
+              class="feedback-box-small"
+              style="background-color: rgba(216, 213, 123, 0.5)"
+            ></div>
+            {% else %}
+            <div
+              class="feedback-box-small"
+              style="background-color: white"
+            ></div>
+            {% endif %} {% endfor %}
+          </div>
+          <div class="guess-popout-guess-text-body">{{ hint }}</div>
+        </div>
+        {% endfor %}
+                <!-- This is to pre-fill the area with four boxes for the hints to go into -->
+        {% for i in range(4 - guess_count) %}
+        <div class="guess-popout-grid-container-box"
+              style="{% if i == 3 %}border-bottom: 0;{% endif %}">
+        </div>
+        {% endfor %}
+                
+        </div>
+      </div>
     </div>
   </body>
 </html>

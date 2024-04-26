@@ -10,6 +10,17 @@ from .guess import Guess
 
 class Thesaurdle:
     def __init__(self, difficulty: str = "hard", rounds: int = 5) -> None:
+
+        pos_map = {
+            "noun": "n.",
+            "verb": "v.",
+            "pronoun": "pro.",
+            "adjective": "adj.",
+            "adverb": "adv.",
+            "conjunction": "conj.",
+            "interjection": "interj.",
+        }
+
         self.gameover = False
         self.rounds = rounds
         self.difficulty = difficulty
@@ -17,6 +28,9 @@ class Thesaurdle:
         self.guesses = []
         self.answer = self.retrieve_answer(difficulty=self.difficulty)
         self.answer.complexity = GPTHelper().call_api_for_complexity(self.answer.word)
+        self.answer.part_of_speech = pos_map.get(
+            self.answer.part_of_speech.lower(), self.answer.part_of_speech
+        )
         self.formatted_answer = (
             self.answer.word.capitalize()
             + " "
