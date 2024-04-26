@@ -92,6 +92,9 @@ body {
   font-family: "Josefin Sans";
   color: rgba(0, 0, 0, 0.7);
   appearance: none;
+  text-align: center;
+  text-align-last: center;
+  -moz-text-align-last: center;
 }
 
 /* Apply hover effect to change text style to italics */
