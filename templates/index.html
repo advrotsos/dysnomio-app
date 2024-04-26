@@ -25,7 +25,10 @@
   <body>
     <div class="main-outer-container" id="mainContainer">
       <div class="action-button-pill">
-        <div class="guess-popout-guess-counter">X</div>
+        <div >
+          <form action="{{ url_for('restart')}}"> <button class="guess-popout-guess-counter" style="background-color: transparent; border: 0;">Quit</button> </form>
+        </div>
+        
       </div>
       <div
         class="action-button-pill-2"

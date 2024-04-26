@@ -35,6 +35,7 @@ body {
   width: 65px;
   position: absolute;
   margin: 32px;
+  font-style: italic;
 }
 
 .action-button-pill-2 {
@@ -51,6 +52,7 @@ body {
 .action-button-pill:hover {
   background-color: darkgray;
   cursor: pointer;
+  font-style: normal;
 }
 .action-button-pill-2:hover {
   background-color: darkgray;
@@ -201,6 +203,10 @@ input {
   color: darkgrey;
   font-style: normal;
   cursor: pointer;
+}
+
+.guess-popout-guess-counter:hover {
+  background-color: darkgray;
 }
 
 .guess-popout-guess-text-title {
