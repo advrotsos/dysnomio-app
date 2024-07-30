@@ -2,6 +2,7 @@ import os
 import time
 import json
 import requests
+from typing import Dict, List, Any
 import pandas as pd
 import numpy as np
 import data.words as words
@@ -9,46 +10,44 @@ from src.exceptions import WordNotFound
 
 
 class DictionaryAPI:
-    """Dictionary API call to return word characteristics. """
+    """Dictionary API call to return word characteristics."""
 
-    def __init__(self, word) -> None:
-        self.url = "https://api.dictionaryapi.dev/api/v2/entries/en/" + word
+    BASE_URL = "https://api.dictionaryapi.dev/api/v2/entries/en/"
 
-    def make_api_call(self, url) -> json:
-        # NOTE: I can probably design this section a lot better
-        # Make this a TODO.
-        response = requests.get(self.url).json()
-        if self.is_word(response):
-            return response
-        else:
-            raise WordNotFound
+    def __init__(self, word: str) -> None:
+        self.word = word
+        self.url = self.BASE_URL + word
 
-    def is_word(self, api_response) -> bool:
-        # NOTE: this is kinda silly, I can definitely make this better
-        try:
-            api_response["title"]
-            return False
-        except TypeError as e:
-            return True
+    def make_api_call(self) -> List[Dict[str, Any]]:
+        response = requests.get(self.url)
+        response.raise_for_status()  # Raises an HTTPError for bad responses
+        data = response.json()
+        
+        if isinstance(data, dict) and "title" in data:
+            raise WordNotFound(f"Word '{self.word}' not found in the dictionary.")
+        
+        return data
 
-    def parse_api_response(self, data) -> pd.DataFrame:
-        self.word = []
-        self.part_of_speech = []
-        self.definition = []
-        for i in range(len(data[0]["meanings"])):
-            self.word.append(data[0]["word"])
-            self.part_of_speech.append(data[0]["meanings"][i]["partOfSpeech"])
-            # NOTE: For now, only grab the first definition per PoS
-            self.definition.append(
-                data[0]["meanings"][i]["definitions"][0]["definition"]
-            )
-        return dict(
-            word=self.word,
-            part_of_speech=self.part_of_speech,
-            definition=self.definition,
-        )
+    def parse_api_response(self, data: List[Dict[str, Any]]) -> Dict[str, List[str]]:
+        parsed_data = {
+            "word": [],
+            "part_of_speech": [],
+            "definition": []
+        }
+        
+        for entry in data:
+            word = entry["word"]
+            for meaning in entry["meanings"]:
+                parsed_data["word"].append(word)
+                parsed_data["part_of_speech"].append(meaning["partOfSpeech"])
+                parsed_data["definition"].append(meaning["definitions"][0]["definition"])
+        
+        return parsed_data
 
     def call_and_parse(self) -> pd.DataFrame:
-        self.json_data = self.make_api_call(self.url)
-        self.output = self.parse_api_response(self.json_data)
-        return self.output
+        try:
+            json_data = self.make_api_call()
+            parsed_data = self.parse_api_response(json_data)
+            return pd.DataFrame(parsed_data)
+        except requests.RequestException as e:
+            raise RuntimeError(f"API request failed: {str(e)}") from e
