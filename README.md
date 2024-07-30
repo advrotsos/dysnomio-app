@@ -1,1 +1,2 @@
-Try it out @ www.dysonomio.com!
+Try it out @ www.dysnomio.com!
+
