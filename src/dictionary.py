@@ -24,8 +24,7 @@ class DictionaryAPI:
             raise WordNotFound
 
     def is_word(self, api_response) -> bool:
-        # NOTE: this is kinda retarded, I can definitely make this better
-        # Works for now, I guess...
+        # NOTE: this is kinda silly, I can definitely make this better
         try:
             api_response["title"]
             return False
